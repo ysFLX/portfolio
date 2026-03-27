@@ -1,210 +1,210 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
+const slides = [
+  {
+    title: "Guohong Laser Market",
+    subtitle: "Kurumsal E-Ticaret Platformu",
+    summary:
+      "Teklif akışı, ürün vitrini ve operasyon panelini aynı yapıda birleştiren Next.js tabanlı kurumsal platform.",
+    stack: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Tailwind"],
+    year: "2026",
+  },
+  {
+    title: "Admin Operasyon Paneli",
+    subtitle: "Dashboard & Süreç Yönetimi",
+    summary:
+      "Sipariş, stok ve kullanıcı süreçleri için performans odaklı, sade ve ölçülebilir bir yönetim ekranı seti.",
+    stack: ["React", "REST API", "UI Systems", "Charts"],
+    year: "2025 - 2026",
+  },
+  {
+    title: "Personal Portfolio",
+    subtitle: "Marka ve Teknik Vitrin",
+    summary:
+      "Kişisel marka dilini, projeleri ve teknik yaklaşımı modern animasyonlarla anlatan web deneyimi.",
+    stack: ["Next.js", "SEO", "Motion", "Responsive UI"],
+    year: "2026",
+  },
+];
+
+const cases = [
+  "Kurumsal satış ve teklif süreçleri",
+  "Yönetim paneli ve operasyon ekranları",
+  "Performans ve SEO odaklı web uygulamaları",
+  "Tasarım sistemi ve bileşen mimarisi",
+];
+
 export default function Home() {
-  const featuredProjects = [
-    {
-      title: "Guohong Laser Market",
-      category: "E-Ticaret / Kurumsal",
-      summary: "Next.js tabanlı ürün vitrini, teklif akışı ve yönetim paneli içeren kurumsal satış platformu.",
-      stack: ["Next.js", "TypeScript", "Prisma", "PostgreSQL"],
-    },
-    {
-      title: "Admin Operasyon Paneli",
-      category: "Dashboard",
-      summary: "Sipariş, stok ve kullanıcı süreçlerini tek panelde yönetmeye odaklanan operasyon arayüzü.",
-      stack: ["React", "Tailwind", "API Routes", "Auth"],
-    },
-    {
-      title: "Portfolio v1",
-      category: "Kişisel Marka",
-      summary: "Projeleri, teknik yaklaşımı ve iletişim kanallarını öne çıkaran kişisel vitrin sitesi.",
-      stack: ["Next.js", "SEO", "Responsive UI", "Performance"],
-    },
-  ];
+  const [active, setActive] = useState(0);
 
-  const skillGroups = [
-    {
-      title: "Frontend",
-      skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Responsive Design"],
-    },
-    {
-      title: "Backend",
-      skills: ["Node.js", "API Design", "Prisma ORM", "PostgreSQL", "Authentication"],
-    },
-    {
-      title: "Ürün & Süreç",
-      skills: ["Clean UI", "Performance", "SEO Basics", "Deployment", "Debugging"],
-    },
-  ];
-
-  const processSteps = [
-    {
-      step: "01",
-      title: "İhtiyaç Analizi",
-      text: "Hedef, kullanıcı kitlesi ve iş akışını netleştirip doğru ürün kapsamını çıkarırım.",
-    },
-    {
-      step: "02",
-      title: "Uygulama Geliştirme",
-      text: "Temiz mimari ile hızlı, bakım yapılabilir ve ölçeklenebilir bir yapı kurarım.",
-    },
-    {
-      step: "03",
-      title: "Yayın & İyileştirme",
-      text: "Projeyi canlıya alır, ölçümleme yapar ve geri bildirimle sürekli geliştiririm.",
-    },
-  ];
-
-  const quickStats = [
-    { label: "Canlı Proje", value: "10+" },
-    { label: "Odak Alanı", value: "Web Apps" },
-    { label: "Öncelik", value: "Kalite + Hız" },
-  ];
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActive((prev) => (prev + 1) % slides.length);
+    }, 5200);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
-    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
-      <main className="mx-auto w-full max-w-6xl px-6 py-8 md:px-10 md:py-12">
-        <header className="sticky top-4 z-40 mb-8 rounded-2xl border border-[var(--border)] bg-[var(--surface)]/90 px-4 py-3 shadow-sm backdrop-blur md:px-6">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--accent)]">Portfolio</p>
-              <p className="text-sm font-semibold text-[var(--foreground)]">Yusuf Can Gördebil</p>
-            </div>
-            <nav className="hidden items-center gap-5 text-sm font-medium text-[var(--text-muted)] md:flex">
-              <a href="#projects" className="transition hover:text-[var(--foreground)]">
-                Projeler
-              </a>
-              <a href="#skills" className="transition hover:text-[var(--foreground)]">
-                Yetenekler
-              </a>
-              <a href="#contact" className="transition hover:text-[var(--foreground)]">
-                İletişim
-              </a>
-            </nav>
+    <div className="portfolio-bg min-h-screen text-[var(--foreground)]">
+      <div className="relative mx-auto w-full max-w-[1400px] px-5 pb-14 pt-6 md:px-10">
+        <header className="mb-10 flex items-center justify-between rounded-2xl border border-[var(--border)] bg-[var(--surface)]/80 px-5 py-4 backdrop-blur">
+          <div>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--accent)]">Portfolio</p>
+            <p className="mt-1 text-sm font-semibold">Yusuf Can Gördebil</p>
           </div>
+          <nav className="flex items-center gap-5 text-sm text-[var(--text-muted)]">
+            <a href="#work" className="transition hover:text-[var(--foreground)]">
+              Work
+            </a>
+            <a href="#skills" className="transition hover:text-[var(--foreground)]">
+              Skills
+            </a>
+            <a href="#contact" className="transition hover:text-[var(--foreground)]">
+              Contact
+            </a>
+          </nav>
         </header>
 
-        <section className="relative overflow-hidden rounded-3xl border border-[var(--border)] bg-[var(--surface)] p-8 md:p-12">
-          <div className="absolute -right-28 -top-24 h-64 w-64 rounded-full bg-[var(--accent)]/20 blur-3xl" />
-          <div className="absolute -left-24 bottom-0 h-64 w-64 rounded-full bg-[var(--foreground)]/8 blur-3xl" />
-          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--accent)]">Frontend Developer</p>
-          <h1 className="mt-4 max-w-4xl text-4xl font-bold leading-tight tracking-tight md:text-6xl">
-            Ürün odaklı, temiz ve performanslı web deneyimleri geliştiriyorum.
-          </h1>
-          <p className="mt-5 max-w-2xl text-base leading-7 text-[var(--text-muted)] md:text-lg">
-            Merhaba, ben Yusuf Can Gördebil. Modern web teknolojileriyle hem kullanıcı dostu hem de iş hedeflerine
-            hizmet eden uygulamalar geliştiriyorum.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <a
-              href="#projects"
-              className="rounded-full bg-[var(--foreground)] px-5 py-2.5 text-sm font-semibold text-white transition hover:opacity-90"
-            >
-              Projelerimi İncele
-            </a>
-            <a
-              href="#contact"
-              className="rounded-full border border-[var(--border)] bg-[var(--surface)] px-5 py-2.5 text-sm font-semibold transition hover:border-[var(--accent)]/50"
-            >
-              Birlikte Çalışalım
-            </a>
-          </div>
+        <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="relative overflow-hidden rounded-3xl border border-[var(--border)] bg-[var(--surface)] p-7 md:p-10">
+            <div className="portfolio-glow absolute -left-24 -top-28 h-72 w-72 rounded-full bg-[var(--accent)]/25 blur-[100px]" />
+            <div className="portfolio-float absolute -bottom-16 right-8 h-48 w-48 rounded-full bg-cyan-400/20 blur-[90px]" />
 
-          <div className="mt-8 grid gap-3 md:grid-cols-3">
-            {quickStats.map((item) => (
-              <div key={item.label} className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] px-4 py-4">
-                <p className="text-xl font-bold text-[var(--foreground)]">{item.value}</p>
-                <p className="mt-1 text-xs uppercase tracking-[0.18em] text-[var(--text-muted)]">{item.label}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section id="projects" className="mt-10 rounded-3xl border border-[var(--border)] bg-[var(--surface)] p-6 md:p-8">
-          <div className="flex items-center justify-between gap-4">
-            <h2 className="text-2xl font-semibold text-[var(--foreground)]">Öne Çıkan Projeler</h2>
-            <a href="#" className="text-sm font-semibold text-[var(--accent)] transition hover:opacity-80">
-              Tümünü Gör
-            </a>
-          </div>
-          <div className="mt-6 grid gap-4 md:grid-cols-3">
-            {featuredProjects.map((project) => (
-              <article
-                key={project.title}
-                className="group rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5 transition hover:-translate-y-0.5 hover:shadow-md"
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--accent)]">Frontend Developer</p>
+            <h1 className="mt-4 text-4xl font-semibold leading-tight tracking-tight md:text-6xl">
+              Animasyonlu, güçlü ve gerçek ürün odaklı web deneyimleri geliştiriyorum.
+            </h1>
+            <p className="mt-5 max-w-2xl text-base leading-7 text-[var(--text-muted)]">
+              Ben Yusuf Can Gördebil. Odaklandığım alan, modern arayüz tasarımını iş hedefleriyle birleştiren yüksek
+              etkileşimli web uygulamaları üretmek.
+            </p>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <a
+                href="#work"
+                className="rounded-full bg-[var(--foreground)] px-5 py-2.5 text-sm font-semibold text-white transition hover:opacity-90"
               >
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--accent)]">{project.category}</p>
-                <h3 className="text-base font-semibold text-[var(--foreground)]">{project.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-[var(--text-muted)]">{project.summary}</p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {project.stack.map((item) => (
-                    <span
-                      key={`${project.title}-${item}`}
-                      className="rounded-full border border-[var(--border)] bg-[var(--accent-soft)] px-2.5 py-1 text-[11px] font-semibold text-[var(--accent)]"
-                    >
-                      {item}
-                    </span>
-                  ))}
+                Projeleri İncele
+              </a>
+              <a
+                href="#contact"
+                className="rounded-full border border-[var(--border)] bg-[var(--surface)] px-5 py-2.5 text-sm font-semibold transition hover:border-[var(--accent)]/45"
+              >
+                İletişime Geç
+              </a>
+            </div>
+          </div>
+
+          <div className="rounded-3xl border border-[var(--border)] bg-[var(--surface)] p-6">
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--accent)]">Focus</p>
+            <div className="mt-4 grid gap-3">
+              {cases.map((item) => (
+                <div key={item} className="rounded-xl border border-[var(--border)] bg-[var(--background)] px-4 py-3 text-sm">
+                  {item}
                 </div>
-                <a href="#" className="mt-5 inline-flex text-sm font-semibold text-[var(--foreground)] transition group-hover:text-[var(--accent)]">
-                  Detaylara Git →
-                </a>
-              </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="work" className="mt-10 rounded-3xl border border-[var(--border)] bg-[var(--surface)] p-5 md:p-7">
+          <div className="mb-5 flex items-center justify-between gap-4">
+            <h2 className="text-2xl font-semibold">Project Slider</h2>
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => setActive((prev) => (prev - 1 + slides.length) % slides.length)}
+                className="rounded-full border border-[var(--border)] px-3 py-1 text-sm transition hover:border-[var(--accent)]/45"
+                aria-label="Önceki proje"
+              >
+                Prev
+              </button>
+              <button
+                type="button"
+                onClick={() => setActive((prev) => (prev + 1) % slides.length)}
+                className="rounded-full border border-[var(--border)] px-3 py-1 text-sm transition hover:border-[var(--accent)]/45"
+                aria-label="Sonraki proje"
+              >
+                Next
+              </button>
+            </div>
+          </div>
+
+          <div className="relative overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--background)]">
+            <div className="relative min-h-[340px] p-6 md:p-8">
+              {slides.map((slide, index) => (
+                <article
+                  key={slide.title}
+                  className={`absolute inset-0 p-6 transition-all duration-500 md:p-8 ${
+                    index === active
+                      ? "translate-x-0 opacity-100"
+                      : index < active
+                        ? "-translate-x-12 opacity-0"
+                        : "translate-x-12 opacity-0"
+                  }`}
+                >
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--accent)]">{slide.subtitle}</p>
+                  <h3 className="mt-3 text-3xl font-semibold tracking-tight">{slide.title}</h3>
+                  <p className="mt-3 max-w-2xl text-sm leading-7 text-[var(--text-muted)]">{slide.summary}</p>
+                  <p className="mt-3 text-sm font-medium text-[var(--foreground)]">Yıl: {slide.year}</p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {slide.stack.map((item) => (
+                      <span
+                        key={`${slide.title}-${item}`}
+                        className="rounded-full border border-[var(--border)] bg-[var(--surface)] px-3 py-1 text-xs font-semibold text-[var(--accent)]"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-4 flex items-center gap-2">
+            {slides.map((slide, index) => (
+              <button
+                key={slide.title}
+                type="button"
+                onClick={() => setActive(index)}
+                className={`h-2.5 rounded-full transition-all ${index === active ? "w-10 bg-[var(--accent)]" : "w-4 bg-[var(--border)]"}`}
+                aria-label={`${slide.title} slaytına git`}
+              />
             ))}
           </div>
         </section>
 
-        <section id="skills" className="mt-10 grid gap-6 md:grid-cols-3">
-          {skillGroups.map((group) => (
-            <article key={group.title} className="rounded-3xl border border-[var(--border)] bg-[var(--surface)] p-6">
-              <h3 className="text-lg font-semibold text-[var(--foreground)]">{group.title}</h3>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {group.skills.map((skill) => (
-                  <span
-                    key={`${group.title}-${skill}`}
-                    className="rounded-full border border-[var(--border)] bg-[var(--accent-soft)] px-3 py-1 text-xs font-semibold text-[var(--accent)]"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </article>
+        <section id="skills" className="mt-10 grid gap-4 md:grid-cols-4">
+          {["React", "Next.js", "TypeScript", "Node.js", "Prisma", "PostgreSQL", "Tailwind", "GitHub"].map((skill) => (
+            <div
+              key={skill}
+              className="group rounded-2xl border border-[var(--border)] bg-[var(--surface)] px-4 py-4 text-center text-sm font-semibold transition hover:-translate-y-0.5 hover:border-[var(--accent)]/40"
+            >
+              <span className="transition group-hover:text-[var(--accent)]">{skill}</span>
+            </div>
           ))}
         </section>
 
-        <section className="mt-10 rounded-3xl border border-[var(--border)] bg-[var(--surface)] p-6 md:p-8">
-          <h2 className="text-2xl font-semibold text-[var(--foreground)]">Çalışma Sürecim</h2>
-          <div className="mt-6 grid gap-4 md:grid-cols-3">
-            {processSteps.map((item) => (
-              <article key={item.step} className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--accent)]">{item.step}</p>
-                <h3 className="mt-2 text-base font-semibold text-[var(--foreground)]">{item.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-[var(--text-muted)]">{item.text}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
         <section id="contact" className="mt-10 rounded-3xl border border-[var(--border)] bg-[var(--foreground)] p-6 md:p-8">
-          <h2 className="text-2xl font-semibold text-white">İletişim</h2>
-          <p className="mt-3 max-w-xl text-sm leading-7 text-white/80">
-            Yeni bir proje fikrin varsa veya mevcut ürününü geliştirmek istiyorsan benimle iletişime geçebilirsin.
+          <h2 className="text-2xl font-semibold text-white">Let&apos;s build something strong.</h2>
+          <p className="mt-3 text-sm leading-7 text-white/80">
+            Yeni proje, freelance iş ya da ekip fırsatları için benimle iletişime geçebilirsin.
           </p>
-          <div className="mt-6 flex flex-wrap gap-3 text-sm font-semibold">
+          <div className="mt-5 flex flex-wrap gap-3 text-sm font-semibold">
             <a href="mailto:email@example.com" className="rounded-full bg-white px-4 py-2 text-[var(--foreground)]">
               email@example.com
             </a>
-            <a href="#" className="rounded-full border border-white/30 px-4 py-2 text-white">
+            <a href="#" className="rounded-full border border-white/35 px-4 py-2 text-white">
               LinkedIn
             </a>
-            <a href="#" className="rounded-full border border-white/30 px-4 py-2 text-white">
+            <a href="#" className="rounded-full border border-white/35 px-4 py-2 text-white">
               GitHub
             </a>
           </div>
         </section>
-
-        <footer className="mt-8 border-t border-[var(--border)] py-6 text-center text-xs text-[var(--text-muted)]">
-          © {new Date().getFullYear()} Yusuf Can Gördebil. Tüm hakları saklıdır.
-        </footer>
-      </main>
+      </div>
     </div>
   );
 }

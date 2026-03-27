@@ -34,3 +34,40 @@ body {
   color: var(--foreground);
   font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
 }
+
+.portfolio-bg {
+  background:
+    radial-gradient(circle at 10% 10%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 34%),
+    radial-gradient(circle at 90% 18%, rgba(34, 211, 238, 0.11), transparent 36%),
+    var(--background);
+}
+
+.portfolio-glow {
+  animation: glowPulse 8s ease-in-out infinite;
+}
+
+.portfolio-float {
+  animation: floatY 7s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes floatY {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
