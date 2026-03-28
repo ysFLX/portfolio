@@ -107,7 +107,8 @@ h4,
 }
 
 .brand-shell {
-  padding: 8px 14px 8px 10px;
+  min-width: 168px;
+  padding: 8px 12px;
   border-radius: 14px;
   border: 1px solid rgba(133, 153, 210, 0.35);
   background: linear-gradient(180deg, rgba(25, 36, 66, 0.62), rgba(13, 22, 43, 0.58));
@@ -115,6 +116,7 @@ h4,
     inset 0 1px 0 rgba(255, 255, 255, 0.06),
     0 8px 22px rgba(7, 12, 24, 0.35);
   backdrop-filter: blur(8px);
+  justify-content: center;
 }
 
 .brand-mark {
@@ -137,7 +139,7 @@ h4,
 
 .brand-word {
   font-family: var(--font-plus-jakarta), var(--font-manrope), sans-serif;
-  font-size: clamp(31px, 2.2vw, 40px);
+  font-size: clamp(23px, 1.35vw, 28px);
   font-weight: 700;
   line-height: 1;
   letter-spacing: 0.01em;
