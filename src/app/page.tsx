@@ -96,16 +96,33 @@ export default function Home() {
         </section>
 
         <section className="section section-glow-soft about-block">
-          <p className="pill left">About Me</p>
-          <p className="about-copy">
-            I&apos;m a software engineer with a passion for building efficient, scalable, and user-friendly web applications.
-            My journey started with a fascination for how things work behind the screen, and quickly evolved into a career
-            focused on creating impactful digital solutions. Over the past few years, I&apos;ve worked on diverse projects.
-          </p>
-          <div className="bubble-stack right">
-            {roleBubbles.map((b) => (
-              <span key={b.label} className={b.className}>{b.label}</span>
-            ))}
+          <div className="about-panel">
+            <p className="pill left">About Me</p>
+
+            <div className="about-layout">
+              <div>
+                <h2 className="about-title">Engineering products that stay fast, useful, and maintainable.</h2>
+                <p className="about-copy">
+                  I&apos;m a software engineer with a strong focus on building efficient, scalable, and user-friendly web
+                  applications. My journey started with curiosity about how products work behind the screen and evolved
+                  into a career centered on real business impact.
+                </p>
+                <p className="about-copy about-copy-muted">
+                  Over the past few years, I&apos;ve worked across product websites, dashboard systems, and internal
+                  platforms. I care about clean architecture, smooth UX, and measurable performance improvements.
+                </p>
+              </div>
+
+              <div className="about-side">
+                <div className="bubble-stack right">
+                  {roleBubbles.map((b) => (
+                    <span key={b.label} className={b.className}>
+                      {b.label}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 

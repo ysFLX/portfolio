@@ -249,16 +249,41 @@ p {
 }
 
 .about-block {
-  padding: 68px 0 82px;
+  padding: 70px 0 90px;
+}
+
+.about-panel {
+  border: 1px solid rgba(118, 139, 196, 0.18);
+  background: linear-gradient(135deg, rgba(20, 31, 58, 0.78), rgba(6, 15, 32, 0.72));
+  border-radius: 14px;
+  padding: 26px 24px 28px;
+}
+
+.about-layout {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: 1.22fr 0.78fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.about-title {
+  font-size: clamp(34px, 2.7vw, 56px);
+  line-height: 1.14;
+  letter-spacing: -0.02em;
+  max-width: 18ch;
 }
 
 .about-copy {
-  margin-top: 26px;
-  max-width: 1180px;
-  font-size: clamp(31px, 2.55vw, 53px);
-  line-height: 1.23;
-  letter-spacing: -0.02em;
-  color: #f4f6fd;
+  margin-top: 18px;
+  max-width: 68ch;
+  font-size: clamp(18px, 1.15vw, 22px);
+  line-height: 1.68;
+  color: #e7ecf9;
+}
+
+.about-copy-muted {
+  color: #b7c2d9;
 }
 
 .bubble-stack {
@@ -281,10 +306,15 @@ p {
 }
 
 .bubble-stack.right {
-  position: absolute;
-  top: 160px;
-  right: 70px;
+  position: sticky;
+  top: 24px;
   flex-direction: column;
+  align-items: flex-start;
+}
+
+.about-side {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .b1 {
@@ -775,6 +805,10 @@ p {
   .featured-posts,
   .edu-grid,
   .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-layout {
     grid-template-columns: 1fr;
   }
 
