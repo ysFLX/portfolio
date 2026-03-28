@@ -120,7 +120,17 @@ export default function Home() {
         body: JSON.stringify(contactForm),
       });
 
-      const data = (await response.json()) as { error?: string };
+      let data: { error?: string } = {};
+      const contentType = response.headers.get("content-type") ?? "";
+      if (contentType.includes("application/json")) {
+        data = (await response.json()) as { error?: string };
+      } else {
+        const rawText = await response.text();
+        if (!response.ok && rawText) {
+          data.error = rawText;
+        }
+      }
+
       if (!response.ok) {
         throw new Error(data.error ?? "Mesaj gönderilemedi.");
       }
