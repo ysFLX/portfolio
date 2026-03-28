@@ -1,313 +1,268 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 
-type Project = {
-  title: string;
-  category: string;
-  summary: string;
-  stack: string[];
-  stats: string;
-  link: string;
-};
+const navButtons = ["Contact Me", "Start your project"];
 
-const navItems = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Projects", href: "#projects" },
-  { label: "Experience", href: "#experience" },
-  { label: "Contact", href: "#contact" },
+const roleBubbles = [
+  { label: "Developer", className: "bubble b1" },
+  { label: "Engineer", className: "bubble b2" },
 ];
 
-const toolbelt = [
-  "Next.js",
-  "React",
-  "TypeScript",
-  "Node.js",
-  "PostgreSQL",
-  "Prisma",
-  "Tailwind",
-  "Framer Motion",
-  "Figma",
-  "GitHub Actions",
-  "Docker",
-  "Vercel",
-];
-
-const projects: Project[] = [
+const experienceCards = [
   {
-    title: "Guohong Laser Commerce",
-    category: "E-Commerce Platform",
-    summary:
-      "B2B teklif akisini ve kurumsal urun vitrini tek bir performans odakli deneyimde birlestiren cok dilli platform.",
-    stack: ["Next.js", "TypeScript", "PostgreSQL", "Prisma"],
-    stats: "Lighthouse 96+, 42% daha hizli katalog akis",
-    link: "#",
+    title: "TechNova Labs Jan 2023 - Present",
+    text: "Key Contributions: Developed dynamic user interfaces using React and TypeScript for SaaS dashboards. Improved page load times by 40% through code-splitting and performance optimization. Collaborated with backend engineers to integrate GraphQL APIs.",
+    featured: true,
   },
   {
-    title: "Ops Control Dashboard",
-    category: "Internal Product",
-    summary:
-      "Satis, stok ve operasyon birimlerini ayni panelde bulusturan rol tabanli dashboard ve otomasyon ekranlari.",
-    stack: ["React", "Charts", "REST API", "RBAC"],
-    stats: "Gunluk raporlama suresi 2.7 saatten 35 dakikaya indi",
-    link: "#",
+    title: "CodeCrate Studio Jul 2022 - Dec 2022",
+    text: "Key Contributions: Developed dynamic user interfaces using React and TypeScript for SaaS dashboards. Improved page load times by 40% through code-splitting and performance optimization. Collaborated with backend engineers to integrate GraphQL APIs.",
+    featured: false,
   },
   {
-    title: "Portfolio Engine v2",
-    category: "Brand Experience",
-    summary:
-      "Marka anlatisini teknik guvenle birlestiren, animasyon agirlikli ve conversion odakli kisisel vitrin deneyimi.",
-    stack: ["Next.js", "Animation", "SEO", "Design System"],
-    stats: "Session suresi 2.1x, bounce oraninda belirgin dusus",
-    link: "#",
+    title: "Freelance Web Developer Self-Employed - 2021 - 2022",
+    text: "Key Contributions: Developed dynamic user interfaces using React and TypeScript for SaaS dashboards. Improved page load times by 40% through code-splitting and performance optimization. Collaborated with backend engineers to integrate GraphQL APIs.",
+    featured: false,
   },
 ];
 
-const services = [
+const skillLogos = ["React", "TS", "NEXT", "HTML5", "Docker", "Tailwind"];
+
+const faqItems = [
   {
-    title: "Frontend Engineering",
-    text: "Olceklenebilir, bakimi kolay ve yuksek performansli arayuz mimarileri.",
+    q: "What kind of projects do you work on?",
+    a: "I build product websites, SaaS dashboards, internal tools, and conversion-focused landing experiences with modern frontend stacks.",
   },
   {
-    title: "Design to Code",
-    text: "Figma konseptlerini pixel-perfect ve responsive uretim kalitesine tasima.",
+    q: "Are you available for freelance or contract work?",
+    a: "Yes. I usually work on fixed-scope engagements, milestone-based retainers, and long-term product collaborations.",
   },
   {
-    title: "Product Optimization",
-    text: "Hiz, SEO ve kullanici akislarinda olculebilir iyilestirmeler.",
+    q: "What\'s your typical workflow or process?",
+    a: "Discovery and scoping, wireframe/design alignment, implementation, QA/performance pass, and launch handoff with documentation.",
+  },
+  {
+    q: "How long does it take to complete a project?",
+    a: "Most landing sites take 2-4 weeks. Product modules vary by scope, usually 3-8 weeks including feedback rounds.",
   },
 ];
 
-const timeline = [
-  {
-    period: "2025 - Present",
-    role: "Senior Frontend Developer",
-    company: "Guohong Laser",
-    detail: "Kurumsal e-commerce ve operasyon urunlerinde mimari sorumluluk ve gelistirme liderligi.",
-  },
-  {
-    period: "2023 - 2025",
-    role: "Frontend Developer",
-    company: "Product Studio",
-    detail: "SaaS panelleri, dashboard sistemleri ve bilesen kutuphaneleri gelistirme.",
-  },
-  {
-    period: "2021 - 2023",
-    role: "UI Developer",
-    company: "Freelance",
-    detail: "Startup odakli landing page, kurumsal vitrin ve donusum odakli web uygulamalari.",
-  },
-];
-
-const testimonials = [
-  {
-    quote:
-      "Yusuf, sadece ekran cikarmiyor; urunun hedefini teknik kararlarla destekleyip hizi her sprintte yukariya cekiyor.",
-    name: "Mert K.",
-    title: "Product Manager",
-  },
-  {
-    quote:
-      "Kod kalitesi ve iletisim dengesi cok iyi. Teslim sureclerinde riskleri erkenden gorup cozum uretiyor.",
-    name: "Elif T.",
-    title: "Design Lead",
-  },
+const footerColumns = [
+  { title: "Product", links: ["Features", "Integrations", "Pricing", "Changelog", "Documentation", "Download"] },
+  { title: "Company", links: ["About Us", "Blog", "Careers", "Customers", "Brand Assets"] },
+  { title: "Resources", links: ["Community", "Contact", "System Status", "Terms of Service"] },
+  { title: "Developers", links: ["API", "System Status", "GitHub"] },
+  { title: "Company", links: ["About Us", "Blog", "Careers", "Customers", "Brand Assets"] },
 ];
 
 export default function Home() {
-  const [activeProject, setActiveProject] = useState(0);
-
-  const active = useMemo(() => projects[activeProject], [activeProject]);
+  const [openFaq, setOpenFaq] = useState(0);
 
   return (
-    <div className="site-shell" id="home">
-      <div className="bg-grid" aria-hidden />
-      <div className="bg-glow bg-glow-a" aria-hidden />
-      <div className="bg-glow bg-glow-b" aria-hidden />
+    <div className="codence-page">
+      <div className="envato-bar">
+        <span className="envato-brand">envato<span>market</span></span>
+        <button type="button">Buy now</button>
+      </div>
 
-      <header className="main-header container">
-        <a href="#home" className="brand">
-          <span className="brand-dot" />
-          Yusuf Can
-        </a>
+      <main className="main-wrap">
+        <section className="hero section section-glow-wide">
+          <header className="site-header">
+            <div className="logo">Codence</div>
+            <div className="header-actions">
+              {navButtons.map((btn, idx) => (
+                <a key={btn} href="#contact" className={idx === 1 ? "btn primary" : "btn ghost"}>
+                  {btn}
+                </a>
+              ))}
+            </div>
+          </header>
 
-        <nav className="main-nav">
-          {navItems.map((item) => (
-            <a key={item.label} href={item.href}>
-              {item.label}
-            </a>
-          ))}
-        </nav>
-
-        <a href="#contact" className="btn btn-ghost">
-          Let&apos;s Talk
-        </a>
-      </header>
-
-      <main>
-        <section className="hero container reveal-up">
-          <div>
-            <p className="eyebrow">Software Engineer Portfolio</p>
-            <h1>
-              Building bold digital products
-              <br />
-              with performance at the core.
-            </h1>
-            <p className="hero-copy">
-              I design and ship modern web experiences where business goals, visual direction, and engineering quality
-              move together.
-            </p>
-            <div className="hero-actions">
-              <a className="btn btn-solid" href="#projects">
-                View Projects
-              </a>
-              <a className="btn btn-ghost" href="#contact">
-                Hire Me
-              </a>
+          <div className="hero-center">
+            <p className="pill">Build Better Software, Seamlessly Together</p>
+            <h1>Clean code. Scalable apps. Reliable delivery.</h1>
+            <p className="subtitle">I’m a software engineer who turns complex ideas into performant, user-friendly web applications.</p>
+            <div className="hero-cta">
+              <a href="#" className="btn ghost">Download Resume</a>
+              <a href="#work" className="btn primary">View My Work</a>
             </div>
           </div>
-
-          <aside className="hero-card float-card">
-            <p className="eyebrow">Current Focus</p>
-            <h3>Frontend + Product Systems</h3>
-            <ul className="stack-list">
-              <li>Enterprise-grade Next.js apps</li>
-              <li>Design system and component architecture</li>
-              <li>SEO and conversion optimization</li>
-            </ul>
-            <div className="hero-stats">
-              <div>
-                <strong>5+</strong>
-                <span>Years</span>
-              </div>
-              <div>
-                <strong>40+</strong>
-                <span>Launches</span>
-              </div>
-              <div>
-                <strong>96+</strong>
-                <span>Perf Score</span>
-              </div>
-            </div>
-          </aside>
         </section>
 
-        <section className="tool-strip">
-          <div className="marquee-track">
-            {[...toolbelt, ...toolbelt].map((tool, index) => (
-              <span key={`${tool}-${index}`}>{tool}</span>
+        <section className="section section-glow-soft about-block">
+          <p className="pill left">About Me</p>
+          <p className="about-copy">
+            I&apos;m a software engineer with a passion for building efficient, scalable, and user-friendly web applications.
+            My journey started with a fascination for how things work behind the screen, and quickly evolved into a career
+            focused on creating impactful digital solutions. Over the past few years, I&apos;ve worked on diverse projects.
+          </p>
+          <div className="bubble-stack right">
+            {roleBubbles.map((b) => (
+              <span key={b.label} className={b.className}>{b.label}</span>
             ))}
           </div>
         </section>
 
-        <section className="about container reveal-up" id="about">
-          <div className="section-title-wrap">
-            <p className="eyebrow">About Me</p>
-            <h2>Crafting interfaces that look premium and work under real pressure.</h2>
-          </div>
-          <p>
-            Good UI is not enough on its own. I focus on the full product loop: information architecture, responsive
-            interaction design, maintainable code structure, and measurable outcomes after launch.
-          </p>
-        </section>
+        <section className="section section-glow-soft work-block" id="work">
+          <h2>Where I&apos;ve built, led, and grown.</h2>
+          <p className="subtitle">Tools I use to build, ship, and scale.</p>
 
-        <section className="services container reveal-up">
-          {services.map((service) => (
-            <article key={service.title} className="info-card">
-              <h3>{service.title}</h3>
-              <p>{service.text}</p>
-            </article>
-          ))}
-        </section>
-
-        <section className="projects container reveal-up" id="projects">
-          <div className="section-title-wrap">
-            <p className="eyebrow">Featured Projects</p>
-            <h2>Selected work with clear product impact.</h2>
-          </div>
-
-          <div className="project-layout">
-            <div className="project-tabs">
-              {projects.map((project, index) => (
-                <button
-                  key={project.title}
-                  type="button"
-                  onClick={() => setActiveProject(index)}
-                  className={index === activeProject ? "is-active" : ""}
-                >
-                  <span>{project.category}</span>
-                  <strong>{project.title}</strong>
-                </button>
-              ))}
-            </div>
-
-            <article className="project-panel">
-              <p className="eyebrow">{active.category}</p>
-              <h3>{active.title}</h3>
-              <p>{active.summary}</p>
-              <div className="chips">
-                {active.stack.map((item) => (
-                  <span key={`${active.title}-${item}`}>{item}</span>
-                ))}
-              </div>
-              <p className="project-stat">{active.stats}</p>
-              <a href={active.link} className="btn btn-solid">
-                Case Study
-              </a>
-            </article>
-          </div>
-        </section>
-
-        <section className="experience container reveal-up" id="experience">
-          <div className="section-title-wrap">
-            <p className="eyebrow">Experience</p>
-            <h2>Timeline</h2>
-          </div>
-
-          <div className="timeline">
-            {timeline.map((item) => (
-              <article key={item.period + item.company} className="timeline-item">
-                <span>{item.period}</span>
-                <h3>{item.role}</h3>
-                <p className="timeline-company">{item.company}</p>
-                <p>{item.detail}</p>
+          <div className="exp-grid">
+            {experienceCards.map((card) => (
+              <article key={card.title} className={`exp-card ${card.featured ? "featured" : ""}`}>
+                <h3>{card.title}</h3>
+                <p>{card.text}</p>
               </article>
             ))}
           </div>
         </section>
 
-        <section className="testimonials container reveal-up">
-          {testimonials.map((item) => (
-            <article key={item.name} className="quote-card">
-              <p className="quote">&quot;{item.quote}&quot;</p>
-              <p className="quote-author">{item.name}</p>
-              <p className="quote-role">{item.title}</p>
-            </article>
-          ))}
-        </section>
-
-        <section className="contact container reveal-up" id="contact">
-          <p className="eyebrow">Contact</p>
-          <h2>Have a product idea? Let&apos;s ship it.</h2>
-          <p>Available for freelance and long-term product collaborations.</p>
-          <div className="hero-actions">
-            <a href="mailto:hello@yusufcan.dev" className="btn btn-solid">
-              hello@yusufcan.dev
-            </a>
-            <a href="#" className="btn btn-ghost">
-              LinkedIn
-            </a>
-            <a href="#" className="btn btn-ghost">
-              GitHub
-            </a>
+        <section className="section section-glow-soft journey-block">
+          <h2>
+            My Professional <span className="pill inline">Journey</span>
+          </h2>
+          <p className="subtitle">Here’s a timeline of my journey through development roles, freelance work, and internships.</p>
+          <div className="bubble-stack mid">
+            <span className="bubble">Engineer</span>
+            <span className="bubble">Developer</span>
           </div>
         </section>
-      </main>
 
-      <footer className="main-footer container">
-        <p>2026 Yusuf Can Gordebil. Crafted with Next.js.</p>
-      </footer>
+        <section className="section section-glow-soft skills-block">
+          <h2>Skills &amp; Technologies</h2>
+          <p className="subtitle">Tools I use to build, ship, and scale.</p>
+          <div className="bubble-stack sides">
+            <span className="bubble">Engineer</span>
+            <span className="bubble">Developer</span>
+          </div>
+          <div className="skills-row">
+            {skillLogos.map((logo) => (
+              <div key={logo} className="skill-item">{logo}</div>
+            ))}
+          </div>
+        </section>
+
+        <section className="section section-glow-soft blog-block">
+          <h2>Latest from the Blog</h2>
+          <p className="subtitle">Ideas, insights, and code reflections.</p>
+
+          <div className="mini-posts">
+            {[0, 1, 2].map((n) => (
+              <article key={n} className={`mini-post ${n === 2 ? "hot" : ""}`}>
+                <h3>Building A Scalable React App From Scratch</h3>
+                <a href="#">KIT-ADMIN</a>
+              </article>
+            ))}
+          </div>
+
+          <div className="featured-posts">
+            <article className="featured-post dark">
+              <div className="image-block" />
+              <h3>Building A Scalable React App From Scratch</h3>
+              <p>A step-by-step breakdown of how I structured, optimized, and deployed a modern React application.</p>
+            </article>
+            <article className="featured-post light">
+              <h3>Building A Scalable React App From Scratch</h3>
+              <p>A step-by-step breakdown of how I structured, optimized, and deployed a modern React application using Vite, Redux Toolkit, and component-based architecture.</p>
+            </article>
+          </div>
+        </section>
+
+        <section className="section education-block">
+          <div className="edu-grid">
+            <article className="edu-card">
+              <p className="pill left">Education</p>
+              <p>Universitas Teknologi Digital - 2019 - 2023 GPA: 3.85 / 4.00, Relevant Coursework: Data Structures, Web Development, Software Engineering, Cloud Computing Activities: Member of Coding Club, Lead Developer in Capstone Project</p>
+            </article>
+            <article className="edu-card">
+              <p className="pill left">Education</p>
+            </article>
+          </div>
+        </section>
+
+        <section className="section section-glow-soft community-block">
+          <h2>Giving Back to the Tech Community</h2>
+          <p className="subtitle">Beyond building projects, I contribute to open-source tools, share knowledge, and support fellow developers around the globe.</p>
+          <article className="community-card">
+            <div className="community-overlay">
+              <h3>David Tan</h3>
+              <p>Client</p>
+            </div>
+            <div className="community-stat">Market Revenue +1500%</div>
+          </article>
+        </section>
+
+        <section className="section faq-block">
+          <p className="subtitle">Answers to common questions about how I work</p>
+          <h2>Frequently Asked Questions</h2>
+          <div className="bubble-stack left-side">
+            <span className="bubble">Engineer</span>
+            <span className="bubble">Developer</span>
+          </div>
+
+          <div className="faq-list">
+            {faqItems.map((item, idx) => (
+              <article key={item.q} className="faq-item">
+                <button type="button" onClick={() => setOpenFaq(openFaq === idx ? -1 : idx)}>
+                  <span>{item.q}</span>
+                  <span>{openFaq === idx ? "-" : "+"}</span>
+                </button>
+                {openFaq === idx && <p>{item.a}</p>}
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="section" id="contact">
+          <div className="cta-card">
+            <div className="bubble-stack card-bubbles">
+              <span className="bubble active">DevOps</span>
+              <span className="bubble">UI/UX</span>
+              <span className="bubble">Manager</span>
+              <span className="bubble">Developer</span>
+            </div>
+            <h2>Let&apos;s build something great together.</h2>
+            <p>Whether you&apos;re looking to collaborate, hire, or just say hello - feel free to reach out.</p>
+            <a className="btn primary" href="mailto:hello@yusufcan.dev">Send Message</a>
+          </div>
+        </section>
+
+        <footer className="footer section">
+          <div className="footer-head">
+            <div className="logo">Codence</div>
+            <div className="socials">
+              <a href="#">X</a>
+              <a href="#">f</a>
+              <a href="#">ig</a>
+            </div>
+          </div>
+
+          <div className="footer-bg-word">CODENCE</div>
+
+          <div className="footer-grid">
+            {footerColumns.map((col) => (
+              <div key={col.title + col.links[0]}>
+                <h4>{col.title}</h4>
+                <ul>
+                  {col.links.map((item) => (
+                    <li key={item}><a href="#">{item}</a></li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          <div className="footer-bottom">
+            <p>Copyright © 2026 Codence - Developer Software engineer Portfolio</p>
+            <div>
+              <a href="#">Terms of Service</a>
+              <a href="#">API</a>
+              <a href="#">Data Processing Agreement</a>
+            </div>
+          </div>
+        </footer>
+      </main>
     </div>
   );
 }
