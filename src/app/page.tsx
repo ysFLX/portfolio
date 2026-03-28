@@ -64,7 +64,7 @@ export default function Home() {
       <main className="main-wrap">
         <section className="hero section section-glow-wide">
           <header className="site-header">
-            <a href="#top" className="brand-logo" aria-label="ysflx">
+            <a href="#top" className="brand-logo brand-shell" aria-label="ysflx">
               <span className="brand-mark" aria-hidden>
                 <svg viewBox="0 0 36 36" role="img">
                   <path d="M9 7h6l6 6-3.2 3.2L13.4 12H9z" />
