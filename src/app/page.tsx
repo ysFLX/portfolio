@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 
 const navButtons = ["Benimle İletişime Geç", "Projeni Başlat"];
@@ -185,7 +186,7 @@ export default function Home() {
           <p className="mx-auto mt-3 max-w-[800px] text-[clamp(16px,1.05vw,19px)] leading-[1.7] text-[#b4bfd6]">Fikirler, teknik içgörüler ve kod notları.</p>
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             {[0, 1, 2].map((n) => (
-              <article key={n} className={`min-h-[146px] rounded-[14px] bg-[#071022] p-[18px] text-left ${n === 2 ? "border-t-2 border-[#ff2f65]" : "border-t-2 border-[#e4e9fa]"}`}>
+              <article key={n} className={`min-h-[146px] rounded-[14px] bg-[#071022] p-[18px] text-left transition duration-300 hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(6,12,26,.45)] ${n === 2 ? "border-t-2 border-[#ff2f65]" : "border-t-2 border-[#e4e9fa]"}`}>
                 <h3 className="font-[var(--font-plus-jakarta)] text-[clamp(20px,1.5vw,28px)] font-semibold leading-[1.35]">Sıfırdan Ölçeklenebilir Bir React Uygulaması Geliştirmek</h3>
                 <a href="#" className="mt-3 inline-block text-sm text-[#d4ddf0] underline">KIT-ADMIN</a>
               </article>
@@ -193,12 +194,29 @@ export default function Home() {
           </div>
 
           <div className="mt-5 grid md:grid-cols-[1.03fr_.97fr]">
-            <article className="min-h-[500px] bg-[rgba(6,11,22,.72)] p-6 text-left">
-              <div className="mb-5 h-[230px] rounded-[10px] bg-[radial-gradient(circle_at_80%_18%,rgba(255,72,194,.46),transparent_46%),linear-gradient(126deg,#263449_0%,#111a2c_46%,#0e1a35_100%)]" />
+            <article className="group min-h-[500px] bg-[rgba(6,11,22,.72)] p-6 text-left">
+              <div className="mb-5 h-[230px] overflow-hidden rounded-[10px] border border-[rgba(118,139,196,.25)]">
+                <Image
+                  src="/images/feature-code.jpg"
+                  alt="Kod editörü ve geliştirme ortamı"
+                  width={1400}
+                  height={900}
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                />
+              </div>
               <h3 className="font-[var(--font-plus-jakarta)] text-[clamp(24px,1.7vw,34px)] font-semibold leading-[1.24]">Sıfırdan Ölçeklenebilir Bir React Uygulaması Geliştirmek</h3>
               <p className="mt-3 text-[15px] leading-[1.74] text-[#dee5f7]">Modern bir React uygulamasını nasıl yapılandırdığımı, optimize ettiğimi ve yayına aldığımı adım adım anlatıyorum.</p>
             </article>
-            <article className="min-h-[500px] bg-[rgba(9,16,30,.9)] p-6 text-left">
+            <article className="group min-h-[500px] bg-[rgba(9,16,30,.9)] p-6 text-left">
+              <div className="mb-5 h-[230px] overflow-hidden rounded-[10px] border border-[rgba(118,139,196,.25)]">
+                <Image
+                  src="/images/feature-team.jpg"
+                  alt="Ürün ekibi ve iş birliği sahnesi"
+                  width={1400}
+                  height={900}
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                />
+              </div>
               <h3 className="font-[var(--font-plus-jakarta)] text-[clamp(24px,1.7vw,34px)] font-semibold leading-[1.24]">Sıfırdan Ölçeklenebilir Bir React Uygulaması Geliştirmek</h3>
               <p className="mt-3 text-[15px] leading-[1.74] text-[#dee5f7]">Vite, Redux Toolkit ve bileşen tabanlı mimari kullanarak modern bir React uygulamasını nasıl kurup optimize ettiğimi detaylıca paylaşıyorum.</p>
             </article>
@@ -226,7 +244,15 @@ export default function Home() {
         <section className="py-[72px] text-center">
           <h2 className="mx-auto max-w-[22ch] font-[var(--font-plus-jakarta)] text-[clamp(34px,3.4vw,58px)] font-semibold leading-[1.15] tracking-[-.022em]">Teknoloji Topluluğuna Katkı</h2>
           <p className="mx-auto mt-3 max-w-[800px] text-[clamp(16px,1.05vw,19px)] leading-[1.7] text-[#b4bfd6]">Proje geliştirmek dışında açık kaynak araçlara katkı sağlıyor, bilgi paylaşıyor ve geliştirici topluluğunu destekliyorum.</p>
-          <article className="relative mx-auto mt-7 min-h-[220px] max-w-[1320px] overflow-hidden rounded-[20px] bg-[linear-gradient(90deg,rgba(72,11,24,.88),rgba(17,29,56,.85)),radial-gradient(circle_at_76%_38%,rgba(255,70,190,.34),transparent_55%)]">
+          <article className="group relative mx-auto mt-7 min-h-[240px] max-w-[1320px] overflow-hidden rounded-[20px] border border-[rgba(143,156,188,.35)]">
+            <Image
+              src="/images/community.jpg"
+              alt="Topluluk etkinliği ve networking"
+              width={1600}
+              height={900}
+              className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(72,11,24,.72),rgba(17,29,56,.76))]" />
             <div className="absolute left-5 top-4 text-left">
               <h3 className="font-[var(--font-plus-jakarta)] text-xl font-semibold">David Tan</h3>
               <p className="text-sm text-[#f0f2fb]">Müşteri</p>
