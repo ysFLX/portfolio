@@ -23,19 +23,13 @@ const experienceCards = [
   },
 ];
 
-const skillGroups = [
-  {
-    title: "Frontend",
-    items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "HTML5", "CSS3"],
-  },
-  {
-    title: "Backend",
-    items: ["Node.js", "Express", "REST API", "GraphQL", "JWT", "Prisma ORM"],
-  },
-  {
-    title: "Veritabanı",
-    items: ["PostgreSQL", "MySQL", "MongoDB", "Redis"],
-  },
+const skillShowcase = [
+  { name: "TypeScript", src: "/logos/typescript.svg" },
+  { name: "Next.js", src: "/logos/nextjs.svg" },
+  { name: "HTML5", src: "/logos/html5.svg" },
+  { name: "Docker", src: "/logos/docker.svg" },
+  { name: "Tailwind", src: "/logos/tailwind.svg" },
+  { name: "React", src: "/logos/react.svg" },
 ];
 
 const faqItems = [
@@ -90,6 +84,14 @@ function BrandLogo({ footer = false }: { footer?: boolean }) {
 export default function Home() {
   const [openFaq, setOpenFaq] = useState(0);
   const [isContactOpen, setIsContactOpen] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [formMessage, setFormMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
+  const [contactForm, setContactForm] = useState({
+    fullName: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
 
   useEffect(() => {
     if (!isContactOpen) return;
@@ -101,6 +103,42 @@ export default function Home() {
     document.addEventListener("keydown", onKeyDown);
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [isContactOpen]);
+
+  const handleContactChange = (field: "fullName" | "email" | "subject" | "message", value: string) => {
+    setContactForm((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const handleContactSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setFormMessage(null);
+    setIsSending(true);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(contactForm),
+      });
+
+      const data = (await response.json()) as { error?: string };
+      if (!response.ok) {
+        throw new Error(data.error ?? "Mesaj gönderilemedi.");
+      }
+
+      setFormMessage({
+        type: "success",
+        text: "Mesajın başarıyla iletildi. En kısa sürede dönüş sağlayacağım.",
+      });
+      setContactForm({ fullName: "", email: "", subject: "", message: "" });
+    } catch (error) {
+      setFormMessage({
+        type: "error",
+        text: error instanceof Error ? error.message : "Beklenmeyen bir hata oluştu.",
+      });
+    } finally {
+      setIsSending(false);
+    }
+  };
 
   return (
     <div id="top" className="min-h-full bg-[radial-gradient(900px_280px_at_20%_10%,rgba(120,130,255,.2),transparent_66%),radial-gradient(760px_260px_at_80%_36%,rgba(110,101,216,.17),transparent_70%),#050c1a]">
@@ -190,29 +228,26 @@ export default function Home() {
           <p className="mx-auto mt-3 max-w-[800px] text-[clamp(16px,1.05vw,19px)] leading-[1.7] text-[#b4bfd6]">Geliştirme rolleri, freelance projeler ve staj deneyimlerimi içeren kariyer zaman çizelgem.</p>
         </section>
 
-        <section className="relative py-14 text-center">
+        <section className="relative overflow-hidden py-16 text-center">
+          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(18deg,transparent_36%,rgba(128,136,230,.28)_52%,transparent_69%)] blur-[26px]" />
+          <div className="pointer-events-none absolute left-6 top-10 rounded-full border border-white/10 bg-white/10 px-5 py-2 text-sm text-white/80">Mühendis</div>
+          <div className="pointer-events-none absolute right-6 top-10 rounded-full border border-white/10 bg-white/10 px-5 py-2 text-sm text-white/80">Geliştirici</div>
           <h2 className="mx-auto max-w-[22ch] font-[var(--font-plus-jakarta)] text-[clamp(34px,3.4vw,58px)] font-semibold leading-[1.15] tracking-[-.022em]">Yetenekler &amp; Teknolojiler</h2>
           <p className="mx-auto mt-3 max-w-[800px] text-[clamp(16px,1.05vw,19px)] leading-[1.7] text-[#b4bfd6]">Geliştirmek, yayına almak ve ölçeklemek için kullandığım araçlar.</p>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {skillGroups.map((group) => (
-              <article
-                key={group.title}
-                className="rounded-2xl border border-[rgba(113,136,189,.28)] bg-[rgba(8,16,32,.72)] p-6 text-left"
-              >
-                <h3 className="font-[var(--font-plus-jakarta)] text-xl font-semibold text-[#e7ecf9]">
-                  {group.title}
-                </h3>
-                <div className="mt-5 flex flex-wrap gap-3">
-                  {group.items.map((item) => (
-                    <span
-                      key={`${group.title}-${item}`}
-                      className="rounded-full border border-[rgba(113,136,189,.35)] bg-[rgba(14,24,44,.85)] px-4 py-2 text-sm font-semibold text-[#c6d3f2]"
-                    >
-                      {item}
-                    </span>
-                  ))}
+          <div className="relative z-10 mt-12 grid grid-cols-2 gap-y-10 sm:grid-cols-3 lg:grid-cols-6 lg:gap-x-14">
+            {skillShowcase.map((skill) => (
+              <div key={skill.name} className="flex flex-col items-center gap-3">
+                <div className="flex h-20 w-20 items-center justify-center rounded-2xl border border-[rgba(113,136,189,.22)] bg-[rgba(8,16,32,.6)] p-3 transition duration-300 hover:-translate-y-1 hover:border-[rgba(140,162,231,.55)]">
+                  <Image
+                    src={skill.src}
+                    alt={skill.name}
+                    width={52}
+                    height={52}
+                    className="h-[52px] w-[52px] object-contain"
+                  />
                 </div>
-              </article>
+                <p className="text-sm font-semibold tracking-[.01em] text-[#d2dcf5]">{skill.name}</p>
+              </div>
             ))}
           </div>
         </section>
@@ -389,13 +424,17 @@ export default function Home() {
               </button>
             </div>
 
-            <form className="space-y-4">
+            <form className="space-y-4" onSubmit={handleContactSubmit}>
               <div className="grid gap-4 sm:grid-cols-2">
                 <label className="space-y-1.5 text-sm text-[#c9d7f5]">
                   Ad Soyad
                   <input
                     type="text"
+                    name="fullName"
                     placeholder="Ad Soyad"
+                    value={contactForm.fullName}
+                    onChange={(event) => handleContactChange("fullName", event.target.value)}
+                    required
                     className="w-full rounded-xl border border-[rgba(131,154,223,.3)] bg-[rgba(10,20,39,.8)] px-3 py-2.5 text-sm text-white outline-none transition focus:border-[rgba(141,158,255,.8)]"
                   />
                 </label>
@@ -403,7 +442,11 @@ export default function Home() {
                   E-posta
                   <input
                     type="email"
+                    name="email"
                     placeholder="mail@ornek.com"
+                    value={contactForm.email}
+                    onChange={(event) => handleContactChange("email", event.target.value)}
+                    required
                     className="w-full rounded-xl border border-[rgba(131,154,223,.3)] bg-[rgba(10,20,39,.8)] px-3 py-2.5 text-sm text-white outline-none transition focus:border-[rgba(141,158,255,.8)]"
                   />
                 </label>
@@ -413,7 +456,11 @@ export default function Home() {
                 Konu
                 <input
                   type="text"
+                  name="subject"
                   placeholder="Proje konusu"
+                  value={contactForm.subject}
+                  onChange={(event) => handleContactChange("subject", event.target.value)}
+                  required
                   className="w-full rounded-xl border border-[rgba(131,154,223,.3)] bg-[rgba(10,20,39,.8)] px-3 py-2.5 text-sm text-white outline-none transition focus:border-[rgba(141,158,255,.8)]"
                 />
               </label>
@@ -422,17 +469,34 @@ export default function Home() {
                 Mesaj
                 <textarea
                   rows={5}
+                  name="message"
                   placeholder="Mesajınızı yazın..."
+                  value={contactForm.message}
+                  onChange={(event) => handleContactChange("message", event.target.value)}
+                  required
                   className="w-full rounded-xl border border-[rgba(131,154,223,.3)] bg-[rgba(10,20,39,.8)] px-3 py-2.5 text-sm text-white outline-none transition focus:border-[rgba(141,158,255,.8)]"
                 />
               </label>
 
+              {formMessage && (
+                <p
+                  className={`rounded-lg border px-3 py-2 text-sm ${
+                    formMessage.type === "success"
+                      ? "border-emerald-400/30 bg-emerald-500/10 text-emerald-200"
+                      : "border-rose-400/30 bg-rose-500/10 text-rose-200"
+                  }`}
+                >
+                  {formMessage.text}
+                </p>
+              )}
+
               <div className="pt-1">
                 <button
                   type="submit"
-                  className="inline-flex h-11 min-w-[150px] items-center justify-center rounded-xl border border-transparent bg-[linear-gradient(180deg,#636bf1_0%,#555ddb_100%)] px-4 text-sm font-semibold text-white shadow-[0_0_18px_rgba(98,108,240,.45)] transition hover:-translate-y-0.5"
+                  disabled={isSending}
+                  className="inline-flex h-11 min-w-[150px] items-center justify-center rounded-xl border border-transparent bg-[linear-gradient(180deg,#636bf1_0%,#555ddb_100%)] px-4 text-sm font-semibold text-white shadow-[0_0_18px_rgba(98,108,240,.45)] transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-70"
                 >
-                  Gönder
+                  {isSending ? "Gönderiliyor..." : "Gönder"}
                 </button>
               </div>
             </form>
