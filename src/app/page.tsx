@@ -2,27 +2,27 @@
 
 import { useState } from "react";
 
-const navButtons = ["Contact Me", "Start your project"];
+const navButtons = ["Benimle İletişime Geç", "Projeni Başlat"];
 
 const roleBubbles = [
-  { label: "Developer", className: "bubble b1" },
-  { label: "Engineer", className: "bubble b2" },
+  { label: "Geliştirici", className: "bubble b1" },
+  { label: "Mühendis", className: "bubble b2" },
 ];
 
 const experienceCards = [
   {
-    title: "TechNova Labs Jan 2023 - Present",
-    text: "Key Contributions: Developed dynamic user interfaces using React and TypeScript for SaaS dashboards. Improved page load times by 40% through code-splitting and performance optimization. Collaborated with backend engineers to integrate GraphQL APIs.",
+    title: "TechNova Labs Oca 2023 - Günümüz",
+    text: "Katkılar: SaaS panelleri için React ve TypeScript ile dinamik kullanıcı arayüzleri geliştirdim. Kod bölme ve performans optimizasyonu ile sayfa yükleme sürelerini %40 iyileştirdim. GraphQL API entegrasyonları için backend ekibiyle birlikte çalıştım.",
     featured: true,
   },
   {
-    title: "CodeCrate Studio Jul 2022 - Dec 2022",
-    text: "Key Contributions: Developed dynamic user interfaces using React and TypeScript for SaaS dashboards. Improved page load times by 40% through code-splitting and performance optimization. Collaborated with backend engineers to integrate GraphQL APIs.",
+    title: "CodeCrate Studio Tem 2022 - Ara 2022",
+    text: "Katkılar: SaaS panelleri için React ve TypeScript ile dinamik kullanıcı arayüzleri geliştirdim. Kod bölme ve performans optimizasyonu ile sayfa yükleme sürelerini %40 iyileştirdim. GraphQL API entegrasyonları için backend ekibiyle birlikte çalıştım.",
     featured: false,
   },
   {
-    title: "Freelance Web Developer Self-Employed - 2021 - 2022",
-    text: "Key Contributions: Developed dynamic user interfaces using React and TypeScript for SaaS dashboards. Improved page load times by 40% through code-splitting and performance optimization. Collaborated with backend engineers to integrate GraphQL APIs.",
+    title: "Freelance Web Geliştirici 2021 - 2022",
+    text: "Katkılar: SaaS panelleri için React ve TypeScript ile dinamik kullanıcı arayüzleri geliştirdim. Kod bölme ve performans optimizasyonu ile sayfa yükleme sürelerini %40 iyileştirdim. GraphQL API entegrasyonları için backend ekibiyle birlikte çalıştım.",
     featured: false,
   },
 ];
@@ -31,29 +31,29 @@ const skillLogos = ["React", "TS", "NEXT", "HTML5", "Docker", "Tailwind"];
 
 const faqItems = [
   {
-    q: "What kind of projects do you work on?",
-    a: "I build product websites, SaaS dashboards, internal tools, and conversion-focused landing experiences with modern frontend stacks.",
+    q: "Ne tür projeler üzerinde çalışıyorsun?",
+    a: "Modern frontend teknolojileriyle ürün web siteleri, SaaS panelleri, iç araçlar ve dönüşüm odaklı landing deneyimleri geliştiriyorum.",
   },
   {
-    q: "Are you available for freelance or contract work?",
-    a: "Yes. I usually work on fixed-scope engagements, milestone-based retainers, and long-term product collaborations.",
+    q: "Freelance veya sözleşmeli çalışmaya uygun musun?",
+    a: "Evet. Genelde kapsamı net projeler, milestone bazlı iş modelleri ve uzun dönem ürün iş birlikleriyle çalışıyorum.",
   },
   {
-    q: "What\'s your typical workflow or process?",
-    a: "Discovery and scoping, wireframe/design alignment, implementation, QA/performance pass, and launch handoff with documentation.",
+    q: "Tipik çalışma sürecin nasıl ilerliyor?",
+    a: "Keşif ve kapsam belirleme, tasarım hizalaması, geliştirme, QA-performans geçişi ve dokümantasyonla teslim adımlarını izliyorum.",
   },
   {
-    q: "How long does it take to complete a project?",
-    a: "Most landing sites take 2-4 weeks. Product modules vary by scope, usually 3-8 weeks including feedback rounds.",
+    q: "Bir projenin tamamlanması ne kadar sürer?",
+    a: "Landing projeleri çoğunlukla 2-4 hafta sürer. Ürün modülleri kapsamına göre genelde geri bildirimlerle birlikte 3-8 hafta arasında tamamlanır.",
   },
 ];
 
 const footerColumns = [
-  { title: "Product", links: ["Features", "Integrations", "Pricing", "Changelog", "Documentation", "Download"] },
-  { title: "Company", links: ["About Us", "Blog", "Careers", "Customers", "Brand Assets"] },
-  { title: "Resources", links: ["Community", "Contact", "System Status", "Terms of Service"] },
-  { title: "Developers", links: ["API", "System Status", "GitHub"] },
-  { title: "Company", links: ["About Us", "Blog", "Careers", "Customers", "Brand Assets"] },
+  { title: "Ürün", links: ["Özellikler", "Entegrasyonlar", "Fiyatlandırma", "Yenilikler", "Dokümantasyon", "İndir"] },
+  { title: "Şirket", links: ["Hakkımızda", "Blog", "Kariyer", "Müşteriler", "Marka Varlıkları"] },
+  { title: "Kaynaklar", links: ["Topluluk", "İletişim", "Sistem Durumu", "Hizmet Şartları"] },
+  { title: "Geliştiriciler", links: ["API", "Sistem Durumu", "GitHub"] },
+  { title: "Şirket", links: ["Hakkımızda", "Blog", "Kariyer", "Müşteriler", "Marka Varlıkları"] },
 ];
 
 export default function Home() {
@@ -85,31 +85,31 @@ export default function Home() {
           </header>
 
           <div className="hero-center">
-            <p className="pill">Build Better Software, Seamlessly Together</p>
-            <h1>Clean code. Scalable apps. Reliable delivery.</h1>
-            <p className="subtitle">I’m a software engineer who turns complex ideas into performant, user-friendly web applications.</p>
+            <p className="pill">Daha İyi Yazılımı Birlikte İnşa Edelim</p>
+            <h1>Temiz kod. Ölçeklenebilir uygulamalar. Güvenilir teslimat.</h1>
+            <p className="subtitle">Karmaşık fikirleri performanslı ve kullanıcı dostu web uygulamalarına dönüştüren bir yazılım mühendisiyim.</p>
             <div className="hero-cta">
-              <a href="#" className="btn ghost">Download Resume</a>
-              <a href="#work" className="btn primary">View My Work</a>
+              <a href="#" className="btn ghost">CV İndir</a>
+              <a href="#work" className="btn primary">Projelerimi Gör</a>
             </div>
           </div>
         </section>
 
         <section className="section section-glow-soft about-block">
           <div className="about-panel">
-            <p className="pill left">About Me</p>
+            <p className="pill left">Hakkımda</p>
 
             <div className="about-layout">
               <div>
-                <h2 className="about-title">Engineering products that stay fast, useful, and maintainable.</h2>
+                <h2 className="about-title">Hızlı, faydalı ve sürdürülebilir ürünler geliştiriyorum.</h2>
                 <p className="about-copy">
-                  I&apos;m a software engineer with a strong focus on building efficient, scalable, and user-friendly web
-                  applications. My journey started with curiosity about how products work behind the screen and evolved
-                  into a career centered on real business impact.
+                  Verimli, ölçeklenebilir ve kullanıcı dostu web uygulamaları geliştirmeye odaklanan bir yazılım
+                  mühendisiyim. Yolculuğum, ürünlerin perde arkasında nasıl çalıştığına duyduğum merakla başladı ve
+                  zamanla gerçek iş etkisi üreten bir kariyere dönüştü.
                 </p>
                 <p className="about-copy about-copy-muted">
-                  Over the past few years, I&apos;ve worked across product websites, dashboard systems, and internal
-                  platforms. I care about clean architecture, smooth UX, and measurable performance improvements.
+                  Son yıllarda ürün web siteleri, dashboard sistemleri ve iç platformlarda çalıştım. Temiz mimari,
+                  akıcı kullanıcı deneyimi ve ölçülebilir performans iyileştirmeleri benim için öncelik.
                 </p>
               </div>
 
@@ -127,8 +127,8 @@ export default function Home() {
         </section>
 
         <section className="section section-glow-soft work-block" id="work">
-          <h2>Where I&apos;ve built, led, and grown.</h2>
-          <p className="subtitle">Tools I use to build, ship, and scale.</p>
+          <h2>Ürettiğim, liderlik ettiğim ve büyüdüğüm yolculuk.</h2>
+          <p className="subtitle">Geliştirmek, yayına almak ve ölçeklemek için kullandığım araçlar.</p>
 
           <div className="exp-grid">
             {experienceCards.map((card) => (
@@ -142,21 +142,21 @@ export default function Home() {
 
         <section className="section section-glow-soft journey-block">
           <h2>
-            My Professional <span className="pill inline">Journey</span>
+            Profesyonel <span className="pill inline">Yolculuğum</span>
           </h2>
-          <p className="subtitle">Here’s a timeline of my journey through development roles, freelance work, and internships.</p>
+          <p className="subtitle">Geliştirme rolleri, freelance projeler ve staj deneyimlerimi içeren kariyer zaman çizelgem.</p>
           <div className="bubble-stack mid">
-            <span className="bubble">Engineer</span>
-            <span className="bubble">Developer</span>
+            <span className="bubble">Mühendis</span>
+            <span className="bubble">Geliştirici</span>
           </div>
         </section>
 
         <section className="section section-glow-soft skills-block">
-          <h2>Skills &amp; Technologies</h2>
-          <p className="subtitle">Tools I use to build, ship, and scale.</p>
+          <h2>Yetenekler &amp; Teknolojiler</h2>
+          <p className="subtitle">Geliştirmek, yayına almak ve ölçeklemek için kullandığım araçlar.</p>
           <div className="bubble-stack sides">
-            <span className="bubble">Engineer</span>
-            <span className="bubble">Developer</span>
+            <span className="bubble">Mühendis</span>
+            <span className="bubble">Geliştirici</span>
           </div>
           <div className="skills-row">
             {skillLogos.map((logo) => (
@@ -166,13 +166,13 @@ export default function Home() {
         </section>
 
         <section className="section section-glow-soft blog-block">
-          <h2>Latest from the Blog</h2>
-          <p className="subtitle">Ideas, insights, and code reflections.</p>
+          <h2>Blogdan Son Yazılar</h2>
+          <p className="subtitle">Fikirler, teknik içgörüler ve kod notları.</p>
 
           <div className="mini-posts">
             {[0, 1, 2].map((n) => (
               <article key={n} className={`mini-post ${n === 2 ? "hot" : ""}`}>
-                <h3>Building A Scalable React App From Scratch</h3>
+                <h3>Sıfırdan Ölçeklenebilir Bir React Uygulaması Geliştirmek</h3>
                 <a href="#">KIT-ADMIN</a>
               </article>
             ))}
@@ -181,12 +181,12 @@ export default function Home() {
           <div className="featured-posts">
             <article className="featured-post dark">
               <div className="image-block" />
-              <h3>Building A Scalable React App From Scratch</h3>
-              <p>A step-by-step breakdown of how I structured, optimized, and deployed a modern React application.</p>
+              <h3>Sıfırdan Ölçeklenebilir Bir React Uygulaması Geliştirmek</h3>
+              <p>Modern bir React uygulamasını nasıl yapılandırdığımı, optimize ettiğimi ve yayına aldığımı adım adım anlatıyorum.</p>
             </article>
             <article className="featured-post light">
-              <h3>Building A Scalable React App From Scratch</h3>
-              <p>A step-by-step breakdown of how I structured, optimized, and deployed a modern React application using Vite, Redux Toolkit, and component-based architecture.</p>
+              <h3>Sıfırdan Ölçeklenebilir Bir React Uygulaması Geliştirmek</h3>
+              <p>Vite, Redux Toolkit ve bileşen tabanlı mimari kullanarak modern bir React uygulamasını nasıl kurup optimize ettiğimi detaylıca paylaşıyorum.</p>
             </article>
           </div>
         </section>
@@ -194,33 +194,33 @@ export default function Home() {
         <section className="section education-block">
           <div className="edu-grid">
             <article className="edu-card">
-              <p className="pill left">Education</p>
-              <p>Universitas Teknologi Digital - 2019 - 2023 GPA: 3.85 / 4.00, Relevant Coursework: Data Structures, Web Development, Software Engineering, Cloud Computing Activities: Member of Coding Club, Lead Developer in Capstone Project</p>
+              <p className="pill left">Eğitim</p>
+              <p>Universitas Teknologi Digital - 2019 - 2023 GPA: 3.85 / 4.00, İlgili Dersler: Veri Yapıları, Web Geliştirme, Yazılım Mühendisliği, Bulut Bilişim Aktiviteler: Kodlama Kulübü Üyesi, Bitirme Projesinde Lider Geliştirici</p>
             </article>
             <article className="edu-card">
-              <p className="pill left">Education</p>
+              <p className="pill left">Eğitim</p>
             </article>
           </div>
         </section>
 
         <section className="section section-glow-soft community-block">
-          <h2>Giving Back to the Tech Community</h2>
-          <p className="subtitle">Beyond building projects, I contribute to open-source tools, share knowledge, and support fellow developers around the globe.</p>
+          <h2>Teknoloji Topluluğuna Katkı</h2>
+          <p className="subtitle">Proje geliştirmek dışında açık kaynak araçlara katkı sağlıyor, bilgi paylaşıyor ve geliştirici topluluğunu destekliyorum.</p>
           <article className="community-card">
             <div className="community-overlay">
               <h3>David Tan</h3>
-              <p>Client</p>
+              <p>Müşteri</p>
             </div>
-            <div className="community-stat">Market Revenue +1500%</div>
+            <div className="community-stat">Pazar Geliri +1500%</div>
           </article>
         </section>
 
         <section className="section faq-block">
-          <p className="subtitle">Answers to common questions about how I work</p>
-          <h2>Frequently Asked Questions</h2>
+          <p className="subtitle">Çalışma biçimimle ilgili sık sorulan sorular</p>
+          <h2>Sıkça Sorulan Sorular</h2>
           <div className="bubble-stack left-side">
-            <span className="bubble">Engineer</span>
-            <span className="bubble">Developer</span>
+            <span className="bubble">Mühendis</span>
+            <span className="bubble">Geliştirici</span>
           </div>
 
           <div className="faq-list">
@@ -241,12 +241,12 @@ export default function Home() {
             <div className="bubble-stack card-bubbles">
               <span className="bubble active">DevOps</span>
               <span className="bubble">UI/UX</span>
-              <span className="bubble">Manager</span>
-              <span className="bubble">Developer</span>
+              <span className="bubble">Yönetici</span>
+              <span className="bubble">Geliştirici</span>
             </div>
-            <h2>Let&apos;s build something great together.</h2>
-            <p>Whether you&apos;re looking to collaborate, hire, or just say hello - feel free to reach out.</p>
-            <a className="btn primary" href="mailto:hello@yusufcan.dev">Send Message</a>
+            <h2>Birlikte harika bir şey inşa edelim.</h2>
+            <p>İster iş birliği yapmak, ister birlikte çalışmak, ister sadece selam vermek iste. Bana her zaman ulaşabilirsin.</p>
+            <a className="btn primary" href="mailto:hello@yusufcan.dev">Mesaj Gönder</a>
           </div>
         </section>
 
@@ -286,11 +286,11 @@ export default function Home() {
           </div>
 
           <div className="footer-bottom">
-            <p>Copyright © 2026 ysflx - Developer Software engineer Portfolio</p>
+            <p>Telif Hakkı © 2026 ysflx - Yazılım Mühendisi Portfolyosu</p>
             <div>
-              <a href="#">Terms of Service</a>
+              <a href="#">Hizmet Şartları</a>
               <a href="#">API</a>
-              <a href="#">Data Processing Agreement</a>
+              <a href="#">Veri İşleme Sözleşmesi</a>
             </div>
           </div>
         </footer>

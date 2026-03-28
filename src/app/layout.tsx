@@ -13,8 +13,8 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Yusuf Can | Software Engineer Portfolio",
-  description: "Animated software engineer portfolio built with Next.js 16.",
+  title: "Yusuf Can | Yazılım Mühendisi Portfolyosu",
+  description: "Next.js 16 ile geliştirilmiş animasyonlu yazılım mühendisi portfolyosu.",
 };
 
 export default function RootLayout({
