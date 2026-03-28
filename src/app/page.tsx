@@ -7,34 +7,24 @@ const navButtons = ["Benimle İletişime Geç", "Projeni Başlat"];
 
 const experienceCards = [
   {
-    title: "TechNova Labs Oca 2023 - Günümüz",
-    text: "Katkılar: SaaS panelleri için React ve TypeScript ile dinamik kullanıcı arayüzleri geliştirdim. Kod bölme ve performans optimizasyonu ile sayfa yükleme sürelerini %40 iyileştirdim. GraphQL API entegrasyonları için backend ekibiyle birlikte çalıştım.",
+    title: "Guohong Lazer 2025 - Günümüz",
+    text: "Katkılar: E-ticaret için React ve TypeScript ile dinamik kullanıcı arayüzleri geliştirdim. Kod bölme ve performans optimizasyonu ile sayfa yükleme sürelerini %40 iyileştirdim.",
     featured: true,
-  },
-  {
-    title: "CodeCrate Studio Tem 2022 - Ara 2022",
-    text: "Katkılar: SaaS panelleri için React ve TypeScript ile dinamik kullanıcı arayüzleri geliştirdim. Kod bölme ve performans optimizasyonu ile sayfa yükleme sürelerini %40 iyileştirdim. GraphQL API entegrasyonları için backend ekibiyle birlikte çalıştım.",
-    featured: false,
-  },
-  {
-    title: "Freelance Web Geliştirici 2021 - 2022",
-    text: "Katkılar: SaaS panelleri için React ve TypeScript ile dinamik kullanıcı arayüzleri geliştirdim. Kod bölme ve performans optimizasyonu ile sayfa yükleme sürelerini %40 iyileştirdim. GraphQL API entegrasyonları için backend ekibiyle birlikte çalıştım.",
-    featured: false,
   },
 ];
 
 const serviceCards = [
   {
-    title: "Ürün Landing ve Pazarlama Sitesi",
-    text: "Performans odaklı, SEO güçlü ve dönüşüm artıran modern landing sayfaları tasarlayıp geliştiriyorum.",
+    title: "Modern Web Tasarım",
+    text: "Web siten tüm cihazlarda sorunsuz çalışır. Telefon, tablet ve bilgisayar uyumluluğunu eksiksiz şekilde sağlıyorum.",
   },
   {
-    title: "SaaS Dashboard ve İç Araçlar",
-    text: "Rol bazlı paneller, veri görselleştirme ve operasyonel akışlar için ölçeklenebilir dashboard mimarileri kuruyorum.",
+    title: "Responsive (Mobil Uyumlu) Geliştirme",
+    text: "Web siten tüm cihazlarda sorunsuz çalışır. Telefon, tablet ve bilgisayar uyumluluğunu eksiksiz şekilde sağlıyorum.",
   },
   {
-    title: "Tam Kapsam Web Uygulaması",
-    text: "Frontend, backend ve veritabanı katmanlarını birlikte ele alarak uçtan uca ürün teslimatı sağlıyorum.",
+    title: "Özel Proje Geliştirme",
+    text: "İhtiyacına özel çözümler üretiyorum. Hazır kalıplar yerine tamamen sana uygun, özgün projeler geliştiriyorum.",
   },
 ];
 
@@ -234,7 +224,7 @@ export default function Home() {
               Temiz kod. Ölçeklenebilir uygulamalar. Güvenilir teslimat.
             </h1>
             <p className="mx-auto mt-3 max-w-[760px] text-[clamp(16px,1.05vw,19px)] leading-[1.7] text-[#b4bfd6]">
-              Karmaşık fikirleri performanslı ve kullanıcı dostu web uygulamalarına dönüştüren bir yazılım mühendisiyim.
+              Karmaşık fikirleri performanslı ve kullanıcı dostu web uygulamalarına dönüştüren bir yazılımcıyım. Aklında ne varsa gerçeğe dökmek için neden bekleyesin?
             </p>
             <div className="mt-6 flex justify-center gap-3">
               <a href="#contact" className="inline-flex h-[52px] min-w-[190px] items-center justify-center rounded-[14px] border border-[rgba(113,136,189,.28)] bg-[rgba(8,17,34,.86)] px-4 text-base font-semibold transition hover:-translate-y-0.5">Ücretsiz Ön Görüşme</a>
@@ -252,18 +242,17 @@ export default function Home() {
             <div className="mt-4 grid items-start gap-8 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]">
               <div>
                 <h2 className="max-w-[14ch] font-[var(--font-plus-jakarta)] text-[clamp(30px,2.25vw,46px)] font-semibold leading-[1.18] tracking-[-.02em]">
-                  Hızlı, faydalı ve sürdürülebilir ürünler geliştiriyorum.
+                  Hızlı, faydalı ve sürdürülebilir projeler geliştiriyorum.
                 </h2>
               </div>
               <div>
                 <p className="max-w-[70ch] text-[clamp(16px,1vw,18px)] leading-[1.8] text-[#e7ecf9]">
-                  Verimli, ölçeklenebilir ve kullanıcı dostu web uygulamaları geliştirmeye odaklanan bir yazılım mühendisiyim.
-                  Yolculuğum, ürünlerin perde arkasında nasıl çalıştığına duyduğum merakla başladı ve zamanla gerçek iş etkisi
-                  üreten bir kariyere dönüştü.
+                  Merhaba, ben Yusuf. Yazılım geliştirme alanında kendimi sürekli geliştiren ve modern web teknolojilerine odaklanan bir geliştiriciyim. Özellikle frontend tarafında, kullanıcı deneyimini ön planda tutan, sade ve etkili arayüzler tasarlamayı seviyorum.
                 </p>
                 <p className="mt-3 max-w-[70ch] text-[clamp(16px,1vw,18px)] leading-[1.8] text-[#b7c2d9]">
-                  Son yıllarda ürün web siteleri, dashboard sistemleri ve iç platformlarda çalıştım. Temiz mimari, akıcı kullanıcı
-                  deneyimi ve ölçülebilir performans iyileştirmeleri benim için öncelik.
+                  Şu anda React ve modern framework’ler üzerinde çalışarak kendimi bir üst seviyeye taşımayı hedefliyorum.
+
+Gerçek projeler üretmeyi ve öğrendiklerimi uygulamaya dökmeyi önemsiyorum. Bu yüzden hem bireysel çalışmalar hem de iş odaklı projeler geliştirerek portföyümü sürekli büyütüyorum.
                 </p>
               </div>
             </div>
@@ -462,8 +451,8 @@ export default function Home() {
 
         <section id="contact" className="py-4">
           <div className="relative mt-5 flex min-h-[340px] flex-col items-center justify-center rounded-[30px] border border-[rgba(113,136,189,.28)] bg-[radial-gradient(circle_at_center,rgba(255,255,255,.09)_2px,transparent_2px)_0_0/64px_64px,#111c34] text-center">
-            <h2 className="mx-auto max-w-[22ch] font-[var(--font-plus-jakarta)] text-[clamp(34px,3.4vw,58px)] font-semibold leading-[1.15] tracking-[-.022em]">Birlikte harika bir şey inşa edelim.</h2>
-            <p className="mt-2 max-w-[680px] text-base leading-[1.75] text-[#d2dbef]">İster iş birliği yapmak, ister birlikte çalışmak, ister sadece selam vermek iste. Bana her zaman ulaşabilirsin.</p>
+            <h2 className="mx-auto max-w-[22ch] font-[var(--font-plus-jakarta)] text-[clamp(34px,3.4vw,58px)] font-semibold leading-[1.15] tracking-[-.022em]">Birlikte projeniz için bir adım atalım.</h2>
+            <p className="mt-2 max-w-[680px] text-base leading-[1.75] text-[#d2dbef]">İster iş birliği yapmak, ister birlikte çalışmak, ister sadece selam vermek iste. Bana her zaman ulaşabilirsin. En yakın zamanda dönüş yapacağım. </p>
             <button
               type="button"
               onClick={() => setIsContactOpen(true)}
