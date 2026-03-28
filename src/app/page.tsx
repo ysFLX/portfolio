@@ -64,7 +64,17 @@ export default function Home() {
       <main className="main-wrap">
         <section className="hero section section-glow-wide">
           <header className="site-header">
-            <div className="logo">ysflx</div>
+            <a href="#top" className="brand-logo" aria-label="ysflx">
+              <span className="brand-mark" aria-hidden>
+                <svg viewBox="0 0 36 36" role="img">
+                  <path d="M9 7h6l6 6-3.2 3.2L13.4 12H9z" />
+                  <path d="M27 7h-6l-6 6 3.2 3.2L22.6 12H27z" />
+                  <path d="M9 29h6l6-6-3.2-3.2-4.4 4.4H9z" />
+                  <path d="M27 29h-6l-6-6 3.2-3.2 4.4 4.4H27z" />
+                </svg>
+              </span>
+              <span className="brand-word">ysflx</span>
+            </a>
             <div className="header-actions">
               {navButtons.map((btn, idx) => (
                 <a key={btn} href="#contact" className={idx === 1 ? "btn primary" : "btn ghost"}>
@@ -225,7 +235,17 @@ export default function Home() {
 
         <footer className="footer section">
           <div className="footer-head">
-            <div className="logo">ysflx</div>
+            <a href="#top" className="brand-logo footer-brand" aria-label="ysflx">
+              <span className="brand-mark" aria-hidden>
+                <svg viewBox="0 0 36 36" role="img">
+                  <path d="M9 7h6l6 6-3.2 3.2L13.4 12H9z" />
+                  <path d="M27 7h-6l-6 6 3.2 3.2L22.6 12H27z" />
+                  <path d="M9 29h6l6-6-3.2-3.2-4.4 4.4H9z" />
+                  <path d="M27 29h-6l-6-6 3.2-3.2 4.4 4.4H27z" />
+                </svg>
+              </span>
+              <span className="brand-word">ysflx</span>
+            </a>
             <div className="socials">
               <a href="#">X</a>
               <a href="#">f</a>
