@@ -1,11 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const navButtons = ["Benimle İletişime Geç", "Projeni Başlat"];
-
-const roleBubbles = ["Geliştirici", "Mühendis"];
 
 const experienceCards = [
   {
@@ -25,20 +23,19 @@ const experienceCards = [
   },
 ];
 
-const skillLogos = ["React", "TS", "NEXT", "HTML5", "Docker", "Tailwind"];
-const skillTicker = [
-  "React",
-  "TypeScript",
-  "Next.js",
-  "Node.js",
-  "PostgreSQL",
-  "Prisma",
-  "Docker",
-  "Tailwind",
-  "GraphQL",
-  "REST API",
-  "CI/CD",
-  "Vercel",
+const skillGroups = [
+  {
+    title: "Frontend",
+    items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "HTML5", "CSS3"],
+  },
+  {
+    title: "Backend",
+    items: ["Node.js", "Express", "REST API", "GraphQL", "JWT", "Prisma ORM"],
+  },
+  {
+    title: "Veritabanı",
+    items: ["PostgreSQL", "MySQL", "MongoDB", "Redis"],
+  },
 ];
 
 const faqItems = [
@@ -92,6 +89,18 @@ function BrandLogo({ footer = false }: { footer?: boolean }) {
 
 export default function Home() {
   const [openFaq, setOpenFaq] = useState(0);
+  const [isContactOpen, setIsContactOpen] = useState(false);
+
+  useEffect(() => {
+    if (!isContactOpen) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsContactOpen(false);
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [isContactOpen]);
 
   return (
     <div id="top" className="min-h-full bg-[radial-gradient(900px_280px_at_20%_10%,rgba(120,130,255,.2),transparent_66%),radial-gradient(760px_260px_at_80%_36%,rgba(110,101,216,.17),transparent_70%),#050c1a]">
@@ -142,20 +151,22 @@ export default function Home() {
               <span className="text-[14px]">⚡</span>
               Hakkımda
             </p>
-            <div className="mt-4 grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_220px]">
+            <div className="mt-4 grid items-start gap-8 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]">
               <div>
-                <h2 className="max-w-[17ch] font-[var(--font-plus-jakarta)] text-[clamp(30px,2.25vw,46px)] font-semibold leading-[1.18] tracking-[-.02em]">Hızlı, faydalı ve sürdürülebilir ürünler geliştiriyorum.</h2>
-                <p className="mt-3 max-w-[64ch] text-[clamp(16px,1vw,18px)] leading-[1.8] text-[#e7ecf9]">Verimli, ölçeklenebilir ve kullanıcı dostu web uygulamaları geliştirmeye odaklanan bir yazılım mühendisiyim. Yolculuğum, ürünlerin perde arkasında nasıl çalıştığına duyduğum merakla başladı ve zamanla gerçek iş etkisi üreten bir kariyere dönüştü.</p>
-                <p className="mt-3 max-w-[64ch] text-[clamp(16px,1vw,18px)] leading-[1.8] text-[#b7c2d9]">Son yıllarda ürün web siteleri, dashboard sistemleri ve iç platformlarda çalıştım. Temiz mimari, akıcı kullanıcı deneyimi ve ölçülebilir performans iyileştirmeleri benim için öncelik.</p>
+                <h2 className="max-w-[14ch] font-[var(--font-plus-jakarta)] text-[clamp(30px,2.25vw,46px)] font-semibold leading-[1.18] tracking-[-.02em]">
+                  Hızlı, faydalı ve sürdürülebilir ürünler geliştiriyorum.
+                </h2>
               </div>
-              <div className="flex justify-start lg:justify-end">
-                <div className="sticky top-6 flex flex-row gap-3 lg:flex-col lg:items-end">
-                  {roleBubbles.map((role, i) => (
-                    <span key={role} className={`rounded-full border border-[rgba(168,180,206,.15)] bg-[rgba(35,43,60,.84)] px-5 py-2 text-[15px] text-[#d6dcee] animate-[bubbleFloat_6s_ease-in-out_infinite] ${i === 0 ? "lg:mr-6" : ""}`}>
-                      {role}
-                    </span>
-                  ))}
-                </div>
+              <div>
+                <p className="max-w-[70ch] text-[clamp(16px,1vw,18px)] leading-[1.8] text-[#e7ecf9]">
+                  Verimli, ölçeklenebilir ve kullanıcı dostu web uygulamaları geliştirmeye odaklanan bir yazılım mühendisiyim.
+                  Yolculuğum, ürünlerin perde arkasında nasıl çalıştığına duyduğum merakla başladı ve zamanla gerçek iş etkisi
+                  üreten bir kariyere dönüştü.
+                </p>
+                <p className="mt-3 max-w-[70ch] text-[clamp(16px,1vw,18px)] leading-[1.8] text-[#b7c2d9]">
+                  Son yıllarda ürün web siteleri, dashboard sistemleri ve iç platformlarda çalıştım. Temiz mimari, akıcı kullanıcı
+                  deneyimi ve ölçülebilir performans iyileştirmeleri benim için öncelik.
+                </p>
               </div>
             </div>
           </div>
@@ -177,40 +188,32 @@ export default function Home() {
         <section className="py-[72px] text-center">
           <h2 className="mx-auto max-w-[22ch] font-[var(--font-plus-jakarta)] text-[clamp(34px,3.4vw,58px)] font-semibold leading-[1.15] tracking-[-.022em]">Profesyonel Yolculuğum</h2>
           <p className="mx-auto mt-3 max-w-[800px] text-[clamp(16px,1.05vw,19px)] leading-[1.7] text-[#b4bfd6]">Geliştirme rolleri, freelance projeler ve staj deneyimlerimi içeren kariyer zaman çizelgem.</p>
-          <div className="mt-8 flex justify-center gap-3">
-            <span className="rounded-full border border-[rgba(168,180,206,.15)] bg-[rgba(35,43,60,.84)] px-5 py-2 text-[15px] text-[#d6dcee]">Mühendis</span>
-            <span className="rounded-full border border-[rgba(168,180,206,.15)] bg-[rgba(35,43,60,.84)] px-5 py-2 text-[15px] text-[#d6dcee]">Geliştirici</span>
-          </div>
         </section>
 
         <section className="relative py-14 text-center">
           <h2 className="mx-auto max-w-[22ch] font-[var(--font-plus-jakarta)] text-[clamp(34px,3.4vw,58px)] font-semibold leading-[1.15] tracking-[-.022em]">Yetenekler &amp; Teknolojiler</h2>
           <p className="mx-auto mt-3 max-w-[800px] text-[clamp(16px,1.05vw,19px)] leading-[1.7] text-[#b4bfd6]">Geliştirmek, yayına almak ve ölçeklemek için kullandığım araçlar.</p>
-          <div className="relative mt-10 overflow-hidden rounded-2xl border border-[rgba(113,136,189,.25)] bg-[rgba(8,16,32,.72)]">
-            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-[linear-gradient(90deg,#050c1a,transparent)]" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-[linear-gradient(270deg,#050c1a,transparent)]" />
-
-            <div className="flex w-max animate-[marquee_24s_linear_infinite] gap-3 py-5">
-              {[...skillTicker, ...skillTicker].map((item, idx) => (
-                <div
-                  key={`${item}-${idx}`}
-                  className="flex items-center rounded-full border border-[rgba(113,136,189,.35)] bg-[rgba(14,24,44,.85)] px-5 py-2 text-sm font-semibold tracking-[.01em] text-[#c6d3f2] whitespace-nowrap"
-                >
-                  {item}
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {skillGroups.map((group) => (
+              <article
+                key={group.title}
+                className="rounded-2xl border border-[rgba(113,136,189,.28)] bg-[rgba(8,16,32,.72)] p-6 text-left"
+              >
+                <h3 className="font-[var(--font-plus-jakarta)] text-xl font-semibold text-[#e7ecf9]">
+                  {group.title}
+                </h3>
+                <div className="mt-5 flex flex-wrap gap-3">
+                  {group.items.map((item) => (
+                    <span
+                      key={`${group.title}-${item}`}
+                      className="rounded-full border border-[rgba(113,136,189,.35)] bg-[rgba(14,24,44,.85)] px-4 py-2 text-sm font-semibold text-[#c6d3f2]"
+                    >
+                      {item}
+                    </span>
+                  ))}
                 </div>
-              ))}
-            </div>
-
-            <div className="flex w-max animate-[marqueeReverse_28s_linear_infinite] gap-3 border-t border-[rgba(113,136,189,.2)] py-4">
-              {[...skillLogos, ...skillLogos, ...skillLogos].map((item, idx) => (
-                <div
-                  key={`${item}-sub-${idx}`}
-                  className="flex items-center rounded-full border border-[rgba(87,186,255,.28)] bg-[rgba(10,32,52,.7)] px-4 py-1.5 text-xs font-semibold tracking-[.06em] text-[#56baf0] whitespace-nowrap uppercase"
-                >
-                  {item}
-                </div>
-              ))}
-            </div>
+              </article>
+            ))}
           </div>
         </section>
 
@@ -268,8 +271,9 @@ export default function Home() {
             <article className="min-h-[210px] rounded-2xl border border-[rgba(113,136,189,.28)] bg-[#0c1528] p-6 text-left">
               <p className="inline-flex items-center gap-2 rounded-xl border border-[rgba(113,136,189,.28)] bg-white/5 px-3.5 py-2 text-[15px] text-[#e9edf8]">
                 <span className="text-[14px]">⚡</span>
-                Eğitim
+                Staj
               </p>
+              <p className="mt-10 text-[15px] leading-[1.72] text-[#d6ddef]">Yazılım Geliştirme Stajyeri - 2022 Yaz Dönemi, ABC Teknoloji. Dashboard bileşenleri geliştirdim, API entegrasyonlarında görev aldım ve performans iyileştirmeleri için frontend optimizasyonlarına katkı sundum.</p>
             </article>
           </div>
         </section>
@@ -314,7 +318,13 @@ export default function Home() {
           <div className="relative mt-5 flex min-h-[340px] flex-col items-center justify-center rounded-[30px] border border-[rgba(113,136,189,.28)] bg-[radial-gradient(circle_at_center,rgba(255,255,255,.09)_2px,transparent_2px)_0_0/64px_64px,#111c34] text-center">
             <h2 className="mx-auto max-w-[22ch] font-[var(--font-plus-jakarta)] text-[clamp(34px,3.4vw,58px)] font-semibold leading-[1.15] tracking-[-.022em]">Birlikte harika bir şey inşa edelim.</h2>
             <p className="mt-2 max-w-[680px] text-base leading-[1.75] text-[#d2dbef]">İster iş birliği yapmak, ister birlikte çalışmak, ister sadece selam vermek iste. Bana her zaman ulaşabilirsin.</p>
-            <a className="mt-5 inline-flex h-[52px] min-w-[190px] items-center justify-center rounded-[14px] border border-transparent bg-[linear-gradient(180deg,#636bf1_0%,#555ddb_100%)] px-4 text-base font-semibold shadow-[0_0_22px_rgba(98,108,240,.45)] transition hover:-translate-y-0.5" href="mailto:hello@yusufcan.dev">Mesaj Gönder</a>
+            <button
+              type="button"
+              onClick={() => setIsContactOpen(true)}
+              className="mt-5 inline-flex h-[52px] min-w-[190px] items-center justify-center rounded-[14px] border border-transparent bg-[linear-gradient(180deg,#636bf1_0%,#555ddb_100%)] px-4 text-base font-semibold shadow-[0_0_22px_rgba(98,108,240,.45)] transition hover:-translate-y-0.5"
+            >
+              Mesaj Gönder
+            </button>
           </div>
         </section>
 
@@ -355,6 +365,80 @@ export default function Home() {
           </div>
         </footer>
       </main>
+
+      {isContactOpen && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-[rgba(3,8,18,.52)] backdrop-blur-md p-4"
+          onClick={() => setIsContactOpen(false)}
+        >
+          <div
+            className="w-full max-w-[560px] rounded-2xl border border-[rgba(131,154,223,.35)] bg-[linear-gradient(160deg,rgba(18,30,55,.98),rgba(10,18,36,.98))] p-6 shadow-[0_20px_60px_rgba(0,0,0,.45)]"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="mb-4 flex items-center justify-between">
+              <h3 className="font-[var(--font-plus-jakarta)] text-2xl font-semibold">Mesaj Gönder</h3>
+              <button
+                type="button"
+                onClick={() => setIsContactOpen(false)}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[rgba(131,154,223,.35)] text-lg text-[#dbe6ff] transition hover:bg-white/10"
+                aria-label="Formu kapat"
+              >
+                ×
+              </button>
+            </div>
+
+            <form className="space-y-4">
+              <div className="grid gap-4 sm:grid-cols-2">
+                <label className="space-y-1.5 text-sm text-[#c9d7f5]">
+                  Ad Soyad
+                  <input
+                    type="text"
+                    placeholder="Ad Soyad"
+                    className="w-full rounded-xl border border-[rgba(131,154,223,.3)] bg-[rgba(10,20,39,.8)] px-3 py-2.5 text-sm text-white outline-none transition focus:border-[rgba(141,158,255,.8)]"
+                  />
+                </label>
+                <label className="space-y-1.5 text-sm text-[#c9d7f5]">
+                  E-posta
+                  <input
+                    type="email"
+                    placeholder="mail@ornek.com"
+                    className="w-full rounded-xl border border-[rgba(131,154,223,.3)] bg-[rgba(10,20,39,.8)] px-3 py-2.5 text-sm text-white outline-none transition focus:border-[rgba(141,158,255,.8)]"
+                  />
+                </label>
+              </div>
+
+              <label className="space-y-1.5 text-sm text-[#c9d7f5]">
+                Konu
+                <input
+                  type="text"
+                  placeholder="Proje konusu"
+                  className="w-full rounded-xl border border-[rgba(131,154,223,.3)] bg-[rgba(10,20,39,.8)] px-3 py-2.5 text-sm text-white outline-none transition focus:border-[rgba(141,158,255,.8)]"
+                />
+              </label>
+
+              <label className="space-y-1.5 text-sm text-[#c9d7f5]">
+                Mesaj
+                <textarea
+                  rows={5}
+                  placeholder="Mesajınızı yazın..."
+                  className="w-full rounded-xl border border-[rgba(131,154,223,.3)] bg-[rgba(10,20,39,.8)] px-3 py-2.5 text-sm text-white outline-none transition focus:border-[rgba(141,158,255,.8)]"
+                />
+              </label>
+
+              <div className="pt-1">
+                <button
+                  type="submit"
+                  className="inline-flex h-11 min-w-[150px] items-center justify-center rounded-xl border border-transparent bg-[linear-gradient(180deg,#636bf1_0%,#555ddb_100%)] px-4 text-sm font-semibold text-white shadow-[0_0_18px_rgba(98,108,240,.45)] transition hover:-translate-y-0.5"
+                >
+                  Gönder
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
