@@ -2,6 +2,7 @@ export const runtime = "nodejs";
 
 type ContactPayload = {
   fullName?: string;
+  phone?: string;
   email?: string;
   subject?: string;
   message?: string;
@@ -13,11 +14,12 @@ export async function POST(request: Request) {
   try {
     const body = (await request.json()) as ContactPayload;
     const fullName = sanitize(body.fullName ?? "");
+    const phone = sanitize(body.phone ?? "");
     const email = sanitize(body.email ?? "");
     const subject = sanitize(body.subject ?? "");
     const message = (body.message ?? "").trim();
 
-    if (!fullName || !email || !subject || !message) {
+    if (!fullName || !phone || !email || !subject || !message) {
       return Response.json({ error: "Lütfen tüm alanları doldurun." }, { status: 400 });
     }
 
@@ -52,11 +54,12 @@ export async function POST(request: Request) {
         to: [toAddress],
         reply_to: email,
         subject: `[Portfolio İletişim] ${subject}`,
-        text: `Ad Soyad: ${fullName}\nE-posta: ${email}\nKonu: ${subject}\n\nMesaj:\n${message}`,
+        text: `Ad Soyad: ${fullName}\nTelefon: ${phone}\nE-posta: ${email}\nKonu: ${subject}\n\nMesaj:\n${message}`,
         html: `
           <div style="font-family:Arial,sans-serif;line-height:1.6">
             <h2>Yeni İletişim Formu Mesajı</h2>
             <p><strong>Ad Soyad:</strong> ${fullName}</p>
+            <p><strong>Telefon:</strong> ${phone}</p>
             <p><strong>E-posta:</strong> ${email}</p>
             <p><strong>Konu:</strong> ${subject}</p>
             <p><strong>Mesaj:</strong></p>

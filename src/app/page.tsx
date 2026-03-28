@@ -88,6 +88,7 @@ export default function Home() {
   const [formMessage, setFormMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
   const [contactForm, setContactForm] = useState({
     fullName: "",
+    phone: "",
     email: "",
     subject: "",
     message: "",
@@ -115,7 +116,7 @@ export default function Home() {
     return () => window.clearTimeout(timer);
   }, [isContactOpen, formMessage]);
 
-  const handleContactChange = (field: "fullName" | "email" | "subject" | "message", value: string) => {
+  const handleContactChange = (field: "fullName" | "phone" | "email" | "subject" | "message", value: string) => {
     setContactForm((prev) => ({ ...prev, [field]: value }));
   };
 
@@ -150,7 +151,7 @@ export default function Home() {
         type: "success",
         text: "Mesajın başarıyla iletildi. En kısa sürede dönüş sağlayacağım.",
       });
-      setContactForm({ fullName: "", email: "", subject: "", message: "" });
+      setContactForm({ fullName: "", phone: "", email: "", subject: "", message: "" });
     } catch (error) {
       setFormMessage({
         type: "error",
@@ -430,97 +431,134 @@ export default function Home() {
           onClick={() => setIsContactOpen(false)}
         >
           <div
-            className="w-full max-w-[560px] rounded-2xl border border-[rgba(131,154,223,.35)] bg-[linear-gradient(160deg,rgba(18,30,55,.98),rgba(10,18,36,.98))] p-6 shadow-[0_20px_60px_rgba(0,0,0,.45)]"
+            className="w-full max-w-[1040px] overflow-hidden rounded-2xl border border-[rgba(131,154,223,.35)] bg-[linear-gradient(160deg,rgba(18,30,55,.98),rgba(10,18,36,.98))] shadow-[0_20px_60px_rgba(0,0,0,.45)]"
             onClick={(event) => event.stopPropagation()}
           >
-            <div className="mb-4 flex items-center justify-between">
-              <h3 className="font-[var(--font-plus-jakarta)] text-2xl font-semibold">Mesaj Gönder</h3>
-              <button
-                type="button"
-                onClick={() => setIsContactOpen(false)}
-                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[rgba(131,154,223,.35)] text-lg text-[#dbe6ff] transition hover:bg-white/10"
-                aria-label="Formu kapat"
-              >
-                ×
-              </button>
+            <div className="grid md:grid-cols-[0.92fr_1.08fr]">
+              <div className="relative hidden min-h-[620px] md:block">
+                <Image
+                  src="/images/feature-team.jpg"
+                  alt="Proje iş birliği görseli"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(170deg,rgba(7,12,24,.26),rgba(8,15,30,.85))]" />
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <p className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3 py-1.5 text-xs font-medium text-white/90 backdrop-blur">
+                    Hızlı Geri Dönüş
+                  </p>
+                  <h4 className="mt-3 max-w-[16ch] font-[var(--font-plus-jakarta)] text-[32px] font-semibold leading-[1.2] text-white">
+                    Projeni birlikte profesyonelce planlayalım.
+                  </h4>
+                  <p className="mt-2 max-w-[34ch] text-sm leading-[1.7] text-[#dbe6ff]">
+                    Formu ilettikten sonra sana en kısa sürede dönüş yapıp kapsam, süre ve teknik yol haritasını netleştiriyorum.
+                  </p>
+                </div>
+              </div>
+
+              <div className="p-6">
+                <div className="mb-4 flex items-center justify-between">
+                  <h3 className="font-[var(--font-plus-jakarta)] text-2xl font-semibold">Mesaj Gönder</h3>
+                  <button
+                    type="button"
+                    onClick={() => setIsContactOpen(false)}
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[rgba(131,154,223,.35)] text-lg text-[#dbe6ff] transition hover:bg-white/10"
+                    aria-label="Formu kapat"
+                  >
+                    ×
+                  </button>
+                </div>
+
+                <form className="space-y-4" onSubmit={handleContactSubmit}>
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <label className="space-y-1.5 text-sm text-[#c9d7f5]">
+                      Ad Soyad
+                      <input
+                        type="text"
+                        name="fullName"
+                        placeholder="Ad Soyad"
+                        value={contactForm.fullName}
+                        onChange={(event) => handleContactChange("fullName", event.target.value)}
+                        required
+                        className="w-full rounded-xl border border-[rgba(131,154,223,.3)] bg-[rgba(10,20,39,.8)] px-3 py-2.5 text-sm text-white outline-none transition focus:border-[rgba(141,158,255,.8)]"
+                      />
+                    </label>
+                    <label className="space-y-1.5 text-sm text-[#c9d7f5]">
+                      Telefon
+                      <input
+                        type="tel"
+                        name="phone"
+                        placeholder="+90 5xx xxx xx xx"
+                        value={contactForm.phone}
+                        onChange={(event) => handleContactChange("phone", event.target.value)}
+                        required
+                        className="w-full rounded-xl border border-[rgba(131,154,223,.3)] bg-[rgba(10,20,39,.8)] px-3 py-2.5 text-sm text-white outline-none transition focus:border-[rgba(141,158,255,.8)]"
+                      />
+                    </label>
+                    <label className="space-y-1.5 text-sm text-[#c9d7f5] sm:col-span-2">
+                      E-posta
+                      <input
+                        type="email"
+                        name="email"
+                        placeholder="mail@ornek.com"
+                        value={contactForm.email}
+                        onChange={(event) => handleContactChange("email", event.target.value)}
+                        required
+                        className="w-full rounded-xl border border-[rgba(131,154,223,.3)] bg-[rgba(10,20,39,.8)] px-3 py-2.5 text-sm text-white outline-none transition focus:border-[rgba(141,158,255,.8)]"
+                      />
+                    </label>
+                  </div>
+
+                  <label className="space-y-1.5 text-sm text-[#c9d7f5]">
+                    Konu
+                    <input
+                      type="text"
+                      name="subject"
+                      placeholder="Proje konusu"
+                      value={contactForm.subject}
+                      onChange={(event) => handleContactChange("subject", event.target.value)}
+                      required
+                      className="w-full rounded-xl border border-[rgba(131,154,223,.3)] bg-[rgba(10,20,39,.8)] px-3 py-2.5 text-sm text-white outline-none transition focus:border-[rgba(141,158,255,.8)]"
+                    />
+                  </label>
+
+                  <label className="space-y-1.5 text-sm text-[#c9d7f5]">
+                    Mesaj
+                    <textarea
+                      rows={5}
+                      name="message"
+                      placeholder="Mesajınızı yazın..."
+                      value={contactForm.message}
+                      onChange={(event) => handleContactChange("message", event.target.value)}
+                      required
+                      className="w-full rounded-xl border border-[rgba(131,154,223,.3)] bg-[rgba(10,20,39,.8)] px-3 py-2.5 text-sm text-white outline-none transition focus:border-[rgba(141,158,255,.8)]"
+                    />
+                  </label>
+
+                  {formMessage && (
+                    <p
+                      className={`rounded-lg border px-3 py-2 text-sm ${
+                        formMessage.type === "success"
+                          ? "border-emerald-400/30 bg-emerald-500/10 text-emerald-200"
+                          : "border-rose-400/30 bg-rose-500/10 text-rose-200"
+                      }`}
+                    >
+                      {formMessage.text}
+                    </p>
+                  )}
+
+                  <div className="pt-1">
+                    <button
+                      type="submit"
+                      disabled={isSending}
+                      className="inline-flex h-11 min-w-[150px] items-center justify-center rounded-xl border border-transparent bg-[linear-gradient(180deg,#636bf1_0%,#555ddb_100%)] px-4 text-sm font-semibold text-white shadow-[0_0_18px_rgba(98,108,240,.45)] transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-70"
+                    >
+                      {isSending ? "Gönderiliyor..." : "Gönder"}
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
-
-            <form className="space-y-4" onSubmit={handleContactSubmit}>
-              <div className="grid gap-4 sm:grid-cols-2">
-                <label className="space-y-1.5 text-sm text-[#c9d7f5]">
-                  Ad Soyad
-                  <input
-                    type="text"
-                    name="fullName"
-                    placeholder="Ad Soyad"
-                    value={contactForm.fullName}
-                    onChange={(event) => handleContactChange("fullName", event.target.value)}
-                    required
-                    className="w-full rounded-xl border border-[rgba(131,154,223,.3)] bg-[rgba(10,20,39,.8)] px-3 py-2.5 text-sm text-white outline-none transition focus:border-[rgba(141,158,255,.8)]"
-                  />
-                </label>
-                <label className="space-y-1.5 text-sm text-[#c9d7f5]">
-                  E-posta
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="mail@ornek.com"
-                    value={contactForm.email}
-                    onChange={(event) => handleContactChange("email", event.target.value)}
-                    required
-                    className="w-full rounded-xl border border-[rgba(131,154,223,.3)] bg-[rgba(10,20,39,.8)] px-3 py-2.5 text-sm text-white outline-none transition focus:border-[rgba(141,158,255,.8)]"
-                  />
-                </label>
-              </div>
-
-              <label className="space-y-1.5 text-sm text-[#c9d7f5]">
-                Konu
-                <input
-                  type="text"
-                  name="subject"
-                  placeholder="Proje konusu"
-                  value={contactForm.subject}
-                  onChange={(event) => handleContactChange("subject", event.target.value)}
-                  required
-                  className="w-full rounded-xl border border-[rgba(131,154,223,.3)] bg-[rgba(10,20,39,.8)] px-3 py-2.5 text-sm text-white outline-none transition focus:border-[rgba(141,158,255,.8)]"
-                />
-              </label>
-
-              <label className="space-y-1.5 text-sm text-[#c9d7f5]">
-                Mesaj
-                <textarea
-                  rows={5}
-                  name="message"
-                  placeholder="Mesajınızı yazın..."
-                  value={contactForm.message}
-                  onChange={(event) => handleContactChange("message", event.target.value)}
-                  required
-                  className="w-full rounded-xl border border-[rgba(131,154,223,.3)] bg-[rgba(10,20,39,.8)] px-3 py-2.5 text-sm text-white outline-none transition focus:border-[rgba(141,158,255,.8)]"
-                />
-              </label>
-
-              {formMessage && (
-                <p
-                  className={`rounded-lg border px-3 py-2 text-sm ${
-                    formMessage.type === "success"
-                      ? "border-emerald-400/30 bg-emerald-500/10 text-emerald-200"
-                      : "border-rose-400/30 bg-rose-500/10 text-rose-200"
-                  }`}
-                >
-                  {formMessage.text}
-                </p>
-              )}
-
-              <div className="pt-1">
-                <button
-                  type="submit"
-                  disabled={isSending}
-                  className="inline-flex h-11 min-w-[150px] items-center justify-center rounded-xl border border-transparent bg-[linear-gradient(180deg,#636bf1_0%,#555ddb_100%)] px-4 text-sm font-semibold text-white shadow-[0_0_18px_rgba(98,108,240,.45)] transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-70"
-                >
-                  {isSending ? "Gönderiliyor..." : "Gönder"}
-                </button>
-              </div>
-            </form>
           </div>
         </div>
       )}
