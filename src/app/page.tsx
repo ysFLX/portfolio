@@ -9,6 +9,7 @@ const experienceCards = [
   {
     title: "Guohong Lazer 2025 - Günümüz",
     text: "Katkılar: E-ticaret için React ve TypeScript ile dinamik kullanıcı arayüzleri geliştirdim. Kod bölme ve performans optimizasyonu ile sayfa yükleme sürelerini %40 iyileştirdim.",
+    referenceUrl: "https://guohongshop.com.tr",
     featured: true,
   },
 ];
@@ -331,6 +332,16 @@ Gerçek projeler üretmeyi ve öğrendiklerimi uygulamaya dökmeyi önemsiyorum.
               >
                 <h3 className="font-[var(--font-plus-jakarta)] text-[clamp(22px,1.45vw,30px)] font-semibold leading-[1.24]">{card.title}</h3>
                 <p className="mt-3 text-[15px] leading-[1.72] text-[#dbe2f4]">{card.text}</p>
+                {"referenceUrl" in card && card.referenceUrl && (
+                  <a
+                    href={card.referenceUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-5 inline-flex rounded-full border border-[rgba(132,154,226,.45)] bg-[rgba(113,126,210,.12)] px-4 py-2 text-sm font-semibold text-[#d8e3ff] transition hover:border-[rgba(160,178,240,.7)] hover:bg-[rgba(113,126,210,.2)]"
+                  >
+                    Referans Siteyi Gör
+                  </a>
+                )}
               </article>
             ))}
           </div>
