@@ -104,6 +104,17 @@ export default function Home() {
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [isContactOpen]);
 
+  useEffect(() => {
+    if (!isContactOpen || formMessage?.type !== "success") return;
+
+    const timer = window.setTimeout(() => {
+      setIsContactOpen(false);
+      setFormMessage(null);
+    }, 5000);
+
+    return () => window.clearTimeout(timer);
+  }, [isContactOpen, formMessage]);
+
   const handleContactChange = (field: "fullName" | "email" | "subject" | "message", value: string) => {
     setContactForm((prev) => ({ ...prev, [field]: value }));
   };
