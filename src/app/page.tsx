@@ -61,15 +61,10 @@ export default function Home() {
 
   return (
     <div className="codence-page">
-      <div className="envato-bar">
-        <span className="envato-brand">envato<span>market</span></span>
-        <button type="button">Buy now</button>
-      </div>
-
       <main className="main-wrap">
         <section className="hero section section-glow-wide">
           <header className="site-header">
-            <div className="logo">Codence</div>
+            <div className="logo">ysflx</div>
             <div className="header-actions">
               {navButtons.map((btn, idx) => (
                 <a key={btn} href="#contact" className={idx === 1 ? "btn primary" : "btn ghost"}>
@@ -230,7 +225,7 @@ export default function Home() {
 
         <footer className="footer section">
           <div className="footer-head">
-            <div className="logo">Codence</div>
+            <div className="logo">ysflx</div>
             <div className="socials">
               <a href="#">X</a>
               <a href="#">f</a>
@@ -238,7 +233,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="footer-bg-word">CODENCE</div>
+          <div className="footer-bg-word">YSFLX</div>
 
           <div className="footer-grid">
             {footerColumns.map((col) => (
@@ -254,7 +249,7 @@ export default function Home() {
           </div>
 
           <div className="footer-bottom">
-            <p>Copyright © 2026 Codence - Developer Software engineer Portfolio</p>
+            <p>Copyright © 2026 ysflx - Developer Software engineer Portfolio</p>
             <div>
               <a href="#">Terms of Service</a>
               <a href="#">API</a>
