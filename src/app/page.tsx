@@ -313,9 +313,22 @@ Gerçek projeler üretmeyi ve öğrendiklerimi uygulamaya dökmeyi önemsiyorum.
         <section id="work" className="py-14 text-center animate-[riseIn_540ms_cubic-bezier(0.23,1,0.32,1)_both] [animation-delay:120ms]">
           <h2 className="mx-auto max-w-[22ch] font-[var(--font-plus-jakarta)] text-[clamp(34px,3.4vw,58px)] font-semibold leading-[1.15] tracking-[-.022em]">Ürettiğim, liderlik ettiğim ve büyüdüğüm yolculuk.</h2>
           <p className="mx-auto mt-3 max-w-[800px] text-[clamp(16px,1.05vw,19px)] leading-[1.7] text-[#b4bfd6]">Geliştirmek, yayına almak ve ölçeklemek için kullandığım araçlar.</p>
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
+          <div
+            className={`mt-8 grid gap-4 ${
+              experienceCards.length === 1
+                ? "mx-auto max-w-[980px] grid-cols-1"
+                : "md:grid-cols-3"
+            }`}
+          >
             {experienceCards.map((card) => (
-              <article key={card.title} className={`rounded-2xl border bg-[#0c1528] p-6 text-left transition hover:-translate-y-0.5 ${card.featured ? "border-[rgba(104,126,228,.8)]" : "border-[rgba(113,136,189,.28)]"}`}>
+              <article
+                key={card.title}
+                className={`rounded-2xl border bg-[#0c1528] p-6 text-left transition hover:-translate-y-0.5 ${
+                  card.featured
+                    ? "border-[rgba(104,126,228,.8)]"
+                    : "border-[rgba(113,136,189,.28)]"
+                } ${experienceCards.length === 1 ? "p-8 md:p-10" : ""}`}
+              >
                 <h3 className="font-[var(--font-plus-jakarta)] text-[clamp(22px,1.45vw,30px)] font-semibold leading-[1.24]">{card.title}</h3>
                 <p className="mt-3 text-[15px] leading-[1.72] text-[#dbe2f4]">{card.text}</p>
               </article>
