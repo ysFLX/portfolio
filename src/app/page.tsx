@@ -80,7 +80,7 @@ export default function Home() {
 
   return (
     <div id="top" className="min-h-full bg-[radial-gradient(900px_280px_at_20%_10%,rgba(120,130,255,.2),transparent_66%),radial-gradient(760px_260px_at_80%_36%,rgba(110,101,216,.17),transparent_70%),#050c1a]">
-      <main className="mx-auto w-[min(1320px,calc(100%-64px))]">
+      <main className="w-full px-4 sm:px-6 lg:px-10 2xl:px-14">
         <section className="relative overflow-hidden pt-7 min-h-[88vh] animate-[riseIn_540ms_cubic-bezier(0.23,1,0.32,1)_both]">
           <div className="pointer-events-none absolute inset-0 animate-[ribbonDrift_12s_ease-in-out_infinite] bg-[linear-gradient(26deg,transparent_32%,rgba(141,149,234,.4)_52%,transparent_72%)] opacity-60 blur-[34px]" />
 
@@ -103,7 +103,7 @@ export default function Home() {
             </div>
           </header>
 
-          <div className="relative z-10 mx-auto mt-36 max-w-[880px] pb-24 text-center">
+          <div className="relative z-10 mx-auto mt-28 max-w-[1120px] pb-20 text-center">
             <p className="inline-flex items-center gap-2 rounded-[14px] border border-[rgba(113,136,189,.28)] bg-white/5 px-3.5 py-2 text-[15px] text-[#e9edf8]">
               <span className="text-[14px]">⚡</span>
               Daha İyi Yazılımı Birlikte İnşa Edelim
@@ -147,7 +147,7 @@ export default function Home() {
         </section>
 
         <section id="work" className="py-[72px] text-center animate-[riseIn_540ms_cubic-bezier(0.23,1,0.32,1)_both] [animation-delay:120ms]">
-          <h2 className="mx-auto max-w-[16ch] font-[var(--font-plus-jakarta)] text-[clamp(34px,3.4vw,58px)] font-semibold leading-[1.15] tracking-[-.022em]">Ürettiğim, liderlik ettiğim ve büyüdüğüm yolculuk.</h2>
+          <h2 className="mx-auto max-w-[22ch] font-[var(--font-plus-jakarta)] text-[clamp(34px,3.4vw,58px)] font-semibold leading-[1.15] tracking-[-.022em]">Ürettiğim, liderlik ettiğim ve büyüdüğüm yolculuk.</h2>
           <p className="mx-auto mt-3 max-w-[800px] text-[clamp(16px,1.05vw,19px)] leading-[1.7] text-[#b4bfd6]">Geliştirmek, yayına almak ve ölçeklemek için kullandığım araçlar.</p>
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             {experienceCards.map((card) => (
@@ -160,7 +160,7 @@ export default function Home() {
         </section>
 
         <section className="py-[72px] text-center">
-          <h2 className="mx-auto max-w-[16ch] font-[var(--font-plus-jakarta)] text-[clamp(34px,3.4vw,58px)] font-semibold leading-[1.15] tracking-[-.022em]">Profesyonel Yolculuğum</h2>
+          <h2 className="mx-auto max-w-[22ch] font-[var(--font-plus-jakarta)] text-[clamp(34px,3.4vw,58px)] font-semibold leading-[1.15] tracking-[-.022em]">Profesyonel Yolculuğum</h2>
           <p className="mx-auto mt-3 max-w-[800px] text-[clamp(16px,1.05vw,19px)] leading-[1.7] text-[#b4bfd6]">Geliştirme rolleri, freelance projeler ve staj deneyimlerimi içeren kariyer zaman çizelgem.</p>
           <div className="mt-8 flex justify-center gap-3">
             <span className="rounded-full border border-[rgba(168,180,206,.15)] bg-[rgba(35,43,60,.84)] px-5 py-2 text-[15px] text-[#d6dcee]">Mühendis</span>
@@ -169,7 +169,7 @@ export default function Home() {
         </section>
 
         <section className="relative py-[72px] text-center">
-          <h2 className="mx-auto max-w-[16ch] font-[var(--font-plus-jakarta)] text-[clamp(34px,3.4vw,58px)] font-semibold leading-[1.15] tracking-[-.022em]">Yetenekler &amp; Teknolojiler</h2>
+          <h2 className="mx-auto max-w-[22ch] font-[var(--font-plus-jakarta)] text-[clamp(34px,3.4vw,58px)] font-semibold leading-[1.15] tracking-[-.022em]">Yetenekler &amp; Teknolojiler</h2>
           <p className="mx-auto mt-3 max-w-[800px] text-[clamp(16px,1.05vw,19px)] leading-[1.7] text-[#b4bfd6]">Geliştirmek, yayına almak ve ölçeklemek için kullandığım araçlar.</p>
           <div className="mt-11 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
             {skillLogos.map((logo) => (
@@ -181,7 +181,7 @@ export default function Home() {
         </section>
 
         <section className="py-[72px] text-center">
-          <h2 className="mx-auto max-w-[16ch] font-[var(--font-plus-jakarta)] text-[clamp(34px,3.4vw,58px)] font-semibold leading-[1.15] tracking-[-.022em]">Blogdan Son Yazılar</h2>
+          <h2 className="mx-auto max-w-[22ch] font-[var(--font-plus-jakarta)] text-[clamp(34px,3.4vw,58px)] font-semibold leading-[1.15] tracking-[-.022em]">Blogdan Son Yazılar</h2>
           <p className="mx-auto mt-3 max-w-[800px] text-[clamp(16px,1.05vw,19px)] leading-[1.7] text-[#b4bfd6]">Fikirler, teknik içgörüler ve kod notları.</p>
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             {[0, 1, 2].map((n) => (
@@ -224,7 +224,7 @@ export default function Home() {
         </section>
 
         <section className="py-[72px] text-center">
-          <h2 className="mx-auto max-w-[16ch] font-[var(--font-plus-jakarta)] text-[clamp(34px,3.4vw,58px)] font-semibold leading-[1.15] tracking-[-.022em]">Teknoloji Topluluğuna Katkı</h2>
+          <h2 className="mx-auto max-w-[22ch] font-[var(--font-plus-jakarta)] text-[clamp(34px,3.4vw,58px)] font-semibold leading-[1.15] tracking-[-.022em]">Teknoloji Topluluğuna Katkı</h2>
           <p className="mx-auto mt-3 max-w-[800px] text-[clamp(16px,1.05vw,19px)] leading-[1.7] text-[#b4bfd6]">Proje geliştirmek dışında açık kaynak araçlara katkı sağlıyor, bilgi paylaşıyor ve geliştirici topluluğunu destekliyorum.</p>
           <article className="relative mx-auto mt-7 min-h-[220px] max-w-[1320px] overflow-hidden rounded-[20px] bg-[linear-gradient(90deg,rgba(72,11,24,.88),rgba(17,29,56,.85)),radial-gradient(circle_at_76%_38%,rgba(255,70,190,.34),transparent_55%)]">
             <div className="absolute left-5 top-4 text-left">
@@ -253,7 +253,7 @@ export default function Home() {
 
         <section id="contact" className="py-4">
           <div className="relative mt-5 flex min-h-[340px] flex-col items-center justify-center rounded-[30px] border border-[rgba(113,136,189,.28)] bg-[radial-gradient(circle_at_center,rgba(255,255,255,.09)_2px,transparent_2px)_0_0/64px_64px,#111c34] text-center">
-            <h2 className="mx-auto max-w-[16ch] font-[var(--font-plus-jakarta)] text-[clamp(34px,3.4vw,58px)] font-semibold leading-[1.15] tracking-[-.022em]">Birlikte harika bir şey inşa edelim.</h2>
+            <h2 className="mx-auto max-w-[22ch] font-[var(--font-plus-jakarta)] text-[clamp(34px,3.4vw,58px)] font-semibold leading-[1.15] tracking-[-.022em]">Birlikte harika bir şey inşa edelim.</h2>
             <p className="mt-2 max-w-[680px] text-base leading-[1.75] text-[#d2dbef]">İster iş birliği yapmak, ister birlikte çalışmak, ister sadece selam vermek iste. Bana her zaman ulaşabilirsin.</p>
             <a className="mt-5 inline-flex h-[52px] min-w-[190px] items-center justify-center rounded-[14px] border border-transparent bg-[linear-gradient(180deg,#636bf1_0%,#555ddb_100%)] px-4 text-base font-semibold shadow-[0_0_22px_rgba(98,108,240,.45)] transition hover:-translate-y-0.5" href="mailto:hello@yusufcan.dev">Mesaj Gönder</a>
           </div>
