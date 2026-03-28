@@ -1,210 +1,313 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 
-const slides = [
+type Project = {
+  title: string;
+  category: string;
+  summary: string;
+  stack: string[];
+  stats: string;
+  link: string;
+};
+
+const navItems = [
+  { label: "Home", href: "#home" },
+  { label: "About", href: "#about" },
+  { label: "Projects", href: "#projects" },
+  { label: "Experience", href: "#experience" },
+  { label: "Contact", href: "#contact" },
+];
+
+const toolbelt = [
+  "Next.js",
+  "React",
+  "TypeScript",
+  "Node.js",
+  "PostgreSQL",
+  "Prisma",
+  "Tailwind",
+  "Framer Motion",
+  "Figma",
+  "GitHub Actions",
+  "Docker",
+  "Vercel",
+];
+
+const projects: Project[] = [
   {
-    title: "Guohong Laser Market",
-    subtitle: "Kurumsal E-Ticaret Platformu",
+    title: "Guohong Laser Commerce",
+    category: "E-Commerce Platform",
     summary:
-      "Teklif akışı, ürün vitrini ve operasyon panelini aynı yapıda birleştiren Next.js tabanlı kurumsal platform.",
-    stack: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Tailwind"],
-    year: "2026",
+      "B2B teklif akisini ve kurumsal urun vitrini tek bir performans odakli deneyimde birlestiren cok dilli platform.",
+    stack: ["Next.js", "TypeScript", "PostgreSQL", "Prisma"],
+    stats: "Lighthouse 96+, 42% daha hizli katalog akis",
+    link: "#",
   },
   {
-    title: "Admin Operasyon Paneli",
-    subtitle: "Dashboard & Süreç Yönetimi",
+    title: "Ops Control Dashboard",
+    category: "Internal Product",
     summary:
-      "Sipariş, stok ve kullanıcı süreçleri için performans odaklı, sade ve ölçülebilir bir yönetim ekranı seti.",
-    stack: ["React", "REST API", "UI Systems", "Charts"],
-    year: "2025 - 2026",
+      "Satis, stok ve operasyon birimlerini ayni panelde bulusturan rol tabanli dashboard ve otomasyon ekranlari.",
+    stack: ["React", "Charts", "REST API", "RBAC"],
+    stats: "Gunluk raporlama suresi 2.7 saatten 35 dakikaya indi",
+    link: "#",
   },
   {
-    title: "Personal Portfolio",
-    subtitle: "Marka ve Teknik Vitrin",
+    title: "Portfolio Engine v2",
+    category: "Brand Experience",
     summary:
-      "Kişisel marka dilini, projeleri ve teknik yaklaşımı modern animasyonlarla anlatan web deneyimi.",
-    stack: ["Next.js", "SEO", "Motion", "Responsive UI"],
-    year: "2026",
+      "Marka anlatisini teknik guvenle birlestiren, animasyon agirlikli ve conversion odakli kisisel vitrin deneyimi.",
+    stack: ["Next.js", "Animation", "SEO", "Design System"],
+    stats: "Session suresi 2.1x, bounce oraninda belirgin dusus",
+    link: "#",
   },
 ];
 
-const cases = [
-  "Kurumsal satış ve teklif süreçleri",
-  "Yönetim paneli ve operasyon ekranları",
-  "Performans ve SEO odaklı web uygulamaları",
-  "Tasarım sistemi ve bileşen mimarisi",
+const services = [
+  {
+    title: "Frontend Engineering",
+    text: "Olceklenebilir, bakimi kolay ve yuksek performansli arayuz mimarileri.",
+  },
+  {
+    title: "Design to Code",
+    text: "Figma konseptlerini pixel-perfect ve responsive uretim kalitesine tasima.",
+  },
+  {
+    title: "Product Optimization",
+    text: "Hiz, SEO ve kullanici akislarinda olculebilir iyilestirmeler.",
+  },
+];
+
+const timeline = [
+  {
+    period: "2025 - Present",
+    role: "Senior Frontend Developer",
+    company: "Guohong Laser",
+    detail: "Kurumsal e-commerce ve operasyon urunlerinde mimari sorumluluk ve gelistirme liderligi.",
+  },
+  {
+    period: "2023 - 2025",
+    role: "Frontend Developer",
+    company: "Product Studio",
+    detail: "SaaS panelleri, dashboard sistemleri ve bilesen kutuphaneleri gelistirme.",
+  },
+  {
+    period: "2021 - 2023",
+    role: "UI Developer",
+    company: "Freelance",
+    detail: "Startup odakli landing page, kurumsal vitrin ve donusum odakli web uygulamalari.",
+  },
+];
+
+const testimonials = [
+  {
+    quote:
+      "Yusuf, sadece ekran cikarmiyor; urunun hedefini teknik kararlarla destekleyip hizi her sprintte yukariya cekiyor.",
+    name: "Mert K.",
+    title: "Product Manager",
+  },
+  {
+    quote:
+      "Kod kalitesi ve iletisim dengesi cok iyi. Teslim sureclerinde riskleri erkenden gorup cozum uretiyor.",
+    name: "Elif T.",
+    title: "Design Lead",
+  },
 ];
 
 export default function Home() {
-  const [active, setActive] = useState(0);
+  const [activeProject, setActiveProject] = useState(0);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setActive((prev) => (prev + 1) % slides.length);
-    }, 5200);
-    return () => clearInterval(timer);
-  }, []);
+  const active = useMemo(() => projects[activeProject], [activeProject]);
 
   return (
-    <div className="portfolio-bg min-h-screen text-[var(--foreground)]">
-      <div className="relative mx-auto w-full max-w-[1400px] px-5 pb-14 pt-6 md:px-10">
-        <header className="mb-10 flex items-center justify-between rounded-2xl border border-[var(--border)] bg-[var(--surface)]/80 px-5 py-4 backdrop-blur">
+    <div className="site-shell" id="home">
+      <div className="bg-grid" aria-hidden />
+      <div className="bg-glow bg-glow-a" aria-hidden />
+      <div className="bg-glow bg-glow-b" aria-hidden />
+
+      <header className="main-header container">
+        <a href="#home" className="brand">
+          <span className="brand-dot" />
+          Yusuf Can
+        </a>
+
+        <nav className="main-nav">
+          {navItems.map((item) => (
+            <a key={item.label} href={item.href}>
+              {item.label}
+            </a>
+          ))}
+        </nav>
+
+        <a href="#contact" className="btn btn-ghost">
+          Let&apos;s Talk
+        </a>
+      </header>
+
+      <main>
+        <section className="hero container reveal-up">
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--accent)]">Portfolio</p>
-            <p className="mt-1 text-sm font-semibold">Yusuf Can Gördebil</p>
-          </div>
-          <nav className="flex items-center gap-5 text-sm text-[var(--text-muted)]">
-            <a href="#work" className="transition hover:text-[var(--foreground)]">
-              Work
-            </a>
-            <a href="#skills" className="transition hover:text-[var(--foreground)]">
-              Skills
-            </a>
-            <a href="#contact" className="transition hover:text-[var(--foreground)]">
-              Contact
-            </a>
-          </nav>
-        </header>
-
-        <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="relative overflow-hidden rounded-3xl border border-[var(--border)] bg-[var(--surface)] p-7 md:p-10">
-            <div className="portfolio-glow absolute -left-24 -top-28 h-72 w-72 rounded-full bg-[var(--accent)]/25 blur-[100px]" />
-            <div className="portfolio-float absolute -bottom-16 right-8 h-48 w-48 rounded-full bg-cyan-400/20 blur-[90px]" />
-
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--accent)]">Frontend Developer</p>
-            <h1 className="mt-4 text-4xl font-semibold leading-tight tracking-tight md:text-6xl">
-              Animasyonlu, güçlü ve gerçek ürün odaklı web deneyimleri geliştiriyorum.
+            <p className="eyebrow">Software Engineer Portfolio</p>
+            <h1>
+              Building bold digital products
+              <br />
+              with performance at the core.
             </h1>
-            <p className="mt-5 max-w-2xl text-base leading-7 text-[var(--text-muted)]">
-              Ben Yusuf Can Gördebil. Odaklandığım alan, modern arayüz tasarımını iş hedefleriyle birleştiren yüksek
-              etkileşimli web uygulamaları üretmek.
+            <p className="hero-copy">
+              I design and ship modern web experiences where business goals, visual direction, and engineering quality
+              move together.
             </p>
-            <div className="mt-7 flex flex-wrap gap-3">
-              <a
-                href="#work"
-                className="rounded-full bg-[var(--foreground)] px-5 py-2.5 text-sm font-semibold text-white transition hover:opacity-90"
-              >
-                Projeleri İncele
+            <div className="hero-actions">
+              <a className="btn btn-solid" href="#projects">
+                View Projects
               </a>
-              <a
-                href="#contact"
-                className="rounded-full border border-[var(--border)] bg-[var(--surface)] px-5 py-2.5 text-sm font-semibold transition hover:border-[var(--accent)]/45"
-              >
-                İletişime Geç
+              <a className="btn btn-ghost" href="#contact">
+                Hire Me
               </a>
             </div>
           </div>
 
-          <div className="rounded-3xl border border-[var(--border)] bg-[var(--surface)] p-6">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--accent)]">Focus</p>
-            <div className="mt-4 grid gap-3">
-              {cases.map((item) => (
-                <div key={item} className="rounded-xl border border-[var(--border)] bg-[var(--background)] px-4 py-3 text-sm">
-                  {item}
-                </div>
-              ))}
+          <aside className="hero-card float-card">
+            <p className="eyebrow">Current Focus</p>
+            <h3>Frontend + Product Systems</h3>
+            <ul className="stack-list">
+              <li>Enterprise-grade Next.js apps</li>
+              <li>Design system and component architecture</li>
+              <li>SEO and conversion optimization</li>
+            </ul>
+            <div className="hero-stats">
+              <div>
+                <strong>5+</strong>
+                <span>Years</span>
+              </div>
+              <div>
+                <strong>40+</strong>
+                <span>Launches</span>
+              </div>
+              <div>
+                <strong>96+</strong>
+                <span>Perf Score</span>
+              </div>
             </div>
-          </div>
+          </aside>
         </section>
 
-        <section id="work" className="mt-10 rounded-3xl border border-[var(--border)] bg-[var(--surface)] p-5 md:p-7">
-          <div className="mb-5 flex items-center justify-between gap-4">
-            <h2 className="text-2xl font-semibold">Project Slider</h2>
-            <div className="flex items-center gap-2">
-              <button
-                type="button"
-                onClick={() => setActive((prev) => (prev - 1 + slides.length) % slides.length)}
-                className="rounded-full border border-[var(--border)] px-3 py-1 text-sm transition hover:border-[var(--accent)]/45"
-                aria-label="Önceki proje"
-              >
-                Prev
-              </button>
-              <button
-                type="button"
-                onClick={() => setActive((prev) => (prev + 1) % slides.length)}
-                className="rounded-full border border-[var(--border)] px-3 py-1 text-sm transition hover:border-[var(--accent)]/45"
-                aria-label="Sonraki proje"
-              >
-                Next
-              </button>
-            </div>
-          </div>
-
-          <div className="relative overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--background)]">
-            <div className="relative min-h-[340px] p-6 md:p-8">
-              {slides.map((slide, index) => (
-                <article
-                  key={slide.title}
-                  className={`absolute inset-0 p-6 transition-all duration-500 md:p-8 ${
-                    index === active
-                      ? "translate-x-0 opacity-100"
-                      : index < active
-                        ? "-translate-x-12 opacity-0"
-                        : "translate-x-12 opacity-0"
-                  }`}
-                >
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--accent)]">{slide.subtitle}</p>
-                  <h3 className="mt-3 text-3xl font-semibold tracking-tight">{slide.title}</h3>
-                  <p className="mt-3 max-w-2xl text-sm leading-7 text-[var(--text-muted)]">{slide.summary}</p>
-                  <p className="mt-3 text-sm font-medium text-[var(--foreground)]">Yıl: {slide.year}</p>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {slide.stack.map((item) => (
-                      <span
-                        key={`${slide.title}-${item}`}
-                        className="rounded-full border border-[var(--border)] bg-[var(--surface)] px-3 py-1 text-xs font-semibold text-[var(--accent)]"
-                      >
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-
-          <div className="mt-4 flex items-center gap-2">
-            {slides.map((slide, index) => (
-              <button
-                key={slide.title}
-                type="button"
-                onClick={() => setActive(index)}
-                className={`h-2.5 rounded-full transition-all ${index === active ? "w-10 bg-[var(--accent)]" : "w-4 bg-[var(--border)]"}`}
-                aria-label={`${slide.title} slaytına git`}
-              />
+        <section className="tool-strip">
+          <div className="marquee-track">
+            {[...toolbelt, ...toolbelt].map((tool, index) => (
+              <span key={`${tool}-${index}`}>{tool}</span>
             ))}
           </div>
         </section>
 
-        <section id="skills" className="mt-10 grid gap-4 md:grid-cols-4">
-          {["React", "Next.js", "TypeScript", "Node.js", "Prisma", "PostgreSQL", "Tailwind", "GitHub"].map((skill) => (
-            <div
-              key={skill}
-              className="group rounded-2xl border border-[var(--border)] bg-[var(--surface)] px-4 py-4 text-center text-sm font-semibold transition hover:-translate-y-0.5 hover:border-[var(--accent)]/40"
-            >
-              <span className="transition group-hover:text-[var(--accent)]">{skill}</span>
-            </div>
+        <section className="about container reveal-up" id="about">
+          <div className="section-title-wrap">
+            <p className="eyebrow">About Me</p>
+            <h2>Crafting interfaces that look premium and work under real pressure.</h2>
+          </div>
+          <p>
+            Good UI is not enough on its own. I focus on the full product loop: information architecture, responsive
+            interaction design, maintainable code structure, and measurable outcomes after launch.
+          </p>
+        </section>
+
+        <section className="services container reveal-up">
+          {services.map((service) => (
+            <article key={service.title} className="info-card">
+              <h3>{service.title}</h3>
+              <p>{service.text}</p>
+            </article>
           ))}
         </section>
 
-        <section id="contact" className="mt-10 rounded-3xl border border-[var(--border)] bg-[var(--foreground)] p-6 md:p-8">
-          <h2 className="text-2xl font-semibold text-white">Let&apos;s build something strong.</h2>
-          <p className="mt-3 text-sm leading-7 text-white/80">
-            Yeni proje, freelance iş ya da ekip fırsatları için benimle iletişime geçebilirsin.
-          </p>
-          <div className="mt-5 flex flex-wrap gap-3 text-sm font-semibold">
-            <a href="mailto:email@example.com" className="rounded-full bg-white px-4 py-2 text-[var(--foreground)]">
-              email@example.com
+        <section className="projects container reveal-up" id="projects">
+          <div className="section-title-wrap">
+            <p className="eyebrow">Featured Projects</p>
+            <h2>Selected work with clear product impact.</h2>
+          </div>
+
+          <div className="project-layout">
+            <div className="project-tabs">
+              {projects.map((project, index) => (
+                <button
+                  key={project.title}
+                  type="button"
+                  onClick={() => setActiveProject(index)}
+                  className={index === activeProject ? "is-active" : ""}
+                >
+                  <span>{project.category}</span>
+                  <strong>{project.title}</strong>
+                </button>
+              ))}
+            </div>
+
+            <article className="project-panel">
+              <p className="eyebrow">{active.category}</p>
+              <h3>{active.title}</h3>
+              <p>{active.summary}</p>
+              <div className="chips">
+                {active.stack.map((item) => (
+                  <span key={`${active.title}-${item}`}>{item}</span>
+                ))}
+              </div>
+              <p className="project-stat">{active.stats}</p>
+              <a href={active.link} className="btn btn-solid">
+                Case Study
+              </a>
+            </article>
+          </div>
+        </section>
+
+        <section className="experience container reveal-up" id="experience">
+          <div className="section-title-wrap">
+            <p className="eyebrow">Experience</p>
+            <h2>Timeline</h2>
+          </div>
+
+          <div className="timeline">
+            {timeline.map((item) => (
+              <article key={item.period + item.company} className="timeline-item">
+                <span>{item.period}</span>
+                <h3>{item.role}</h3>
+                <p className="timeline-company">{item.company}</p>
+                <p>{item.detail}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="testimonials container reveal-up">
+          {testimonials.map((item) => (
+            <article key={item.name} className="quote-card">
+              <p className="quote">&quot;{item.quote}&quot;</p>
+              <p className="quote-author">{item.name}</p>
+              <p className="quote-role">{item.title}</p>
+            </article>
+          ))}
+        </section>
+
+        <section className="contact container reveal-up" id="contact">
+          <p className="eyebrow">Contact</p>
+          <h2>Have a product idea? Let&apos;s ship it.</h2>
+          <p>Available for freelance and long-term product collaborations.</p>
+          <div className="hero-actions">
+            <a href="mailto:hello@yusufcan.dev" className="btn btn-solid">
+              hello@yusufcan.dev
             </a>
-            <a href="#" className="rounded-full border border-white/35 px-4 py-2 text-white">
+            <a href="#" className="btn btn-ghost">
               LinkedIn
             </a>
-            <a href="#" className="rounded-full border border-white/35 px-4 py-2 text-white">
+            <a href="#" className="btn btn-ghost">
               GitHub
             </a>
           </div>
         </section>
-      </div>
+      </main>
+
+      <footer className="main-footer container">
+        <p>2026 Yusuf Can Gordebil. Crafted with Next.js.</p>
+      </footer>
     </div>
   );
 }
