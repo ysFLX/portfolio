@@ -376,7 +376,7 @@ export default function Home() {
           </div>
 
           <div className="mt-5 grid md:grid-cols-[1.03fr_.97fr]">
-            <article className="group min-h-[500px] bg-[rgba(6,11,22,.72)] p-6 text-left">
+            <article className="group min-h-[500px] bg-[rgba(9,16,30,.9)] p-6 text-left">
               <div className="mb-5 h-[230px] overflow-hidden rounded-[10px] border border-[rgba(118,139,196,.25)]">
                 <Image
                   src="/images/feature-code.jpg"
