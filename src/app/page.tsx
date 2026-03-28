@@ -23,6 +23,44 @@ const experienceCards = [
   },
 ];
 
+const serviceCards = [
+  {
+    title: "Ürün Landing ve Pazarlama Sitesi",
+    text: "Performans odaklı, SEO güçlü ve dönüşüm artıran modern landing sayfaları tasarlayıp geliştiriyorum.",
+  },
+  {
+    title: "SaaS Dashboard ve İç Araçlar",
+    text: "Rol bazlı paneller, veri görselleştirme ve operasyonel akışlar için ölçeklenebilir dashboard mimarileri kuruyorum.",
+  },
+  {
+    title: "Tam Kapsam Web Uygulaması",
+    text: "Frontend, backend ve veritabanı katmanlarını birlikte ele alarak uçtan uca ürün teslimatı sağlıyorum.",
+  },
+];
+
+const processSteps = [
+  {
+    step: "01",
+    title: "Keşif ve Kapsam",
+    text: "Hedef, kullanıcı ve teknik gereksinimleri netleştirip doğru kapsamı belirliyorum.",
+  },
+  {
+    step: "02",
+    title: "Mimari ve Tasarım",
+    text: "Bileşen yapısı, veri akışı ve ekran kurgusunu sürdürülebilir bir temel üzerine kuruyorum.",
+  },
+  {
+    step: "03",
+    title: "Geliştirme ve Test",
+    text: "Yüksek kalite kod, performans optimizasyonları ve kritik senaryolarda test yaklaşımıyla ilerliyorum.",
+  },
+  {
+    step: "04",
+    title: "Yayın ve İyileştirme",
+    text: "Yayına alma, ölçümleme ve kullanıcı geri bildirimlerine göre sürekli iyileştirme döngüsü kuruyorum.",
+  },
+];
+
 const skillShowcase = [
   { name: "TypeScript", src: "/logos/typescript.svg" },
   { name: "Next.js", src: "/logos/nextjs.svg" },
@@ -229,6 +267,57 @@ export default function Home() {
                 </p>
               </div>
             </div>
+          </div>
+        </section>
+
+        <section className="py-12 animate-[riseIn_540ms_cubic-bezier(0.23,1,0.32,1)_both] [animation-delay:90ms]">
+          <div className="text-center">
+            <h2 className="mx-auto max-w-[22ch] font-[var(--font-plus-jakarta)] text-[clamp(34px,3.4vw,58px)] font-semibold leading-[1.15] tracking-[-.022em]">
+              Neler Sunuyorum
+            </h2>
+            <p className="mx-auto mt-3 max-w-[840px] text-[clamp(16px,1.05vw,19px)] leading-[1.7] text-[#b4bfd6]">
+              Ürünün fikrinden yayına alınmasına kadar teknik kaliteyi ve iş hedefini birlikte büyüten bir geliştirme modeli.
+            </p>
+          </div>
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            {serviceCards.map((card) => (
+              <article
+                key={card.title}
+                className="rounded-2xl border border-[rgba(113,136,189,.28)] bg-[linear-gradient(145deg,rgba(12,21,40,.95),rgba(8,16,31,.94))] p-6 text-left transition duration-300 hover:-translate-y-1 hover:border-[rgba(140,162,231,.55)]"
+              >
+                <h3 className="font-[var(--font-plus-jakarta)] text-[clamp(22px,1.45vw,30px)] font-semibold leading-[1.24] text-[#f4f7ff]">
+                  {card.title}
+                </h3>
+                <p className="mt-3 text-[15px] leading-[1.74] text-[#d0daee]">{card.text}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="py-12 animate-[riseIn_540ms_cubic-bezier(0.23,1,0.32,1)_both] [animation-delay:110ms]">
+          <div className="text-center">
+            <h2 className="mx-auto max-w-[22ch] font-[var(--font-plus-jakarta)] text-[clamp(34px,3.4vw,58px)] font-semibold leading-[1.15] tracking-[-.022em]">
+              Çalışma Sürecim
+            </h2>
+            <p className="mx-auto mt-3 max-w-[840px] text-[clamp(16px,1.05vw,19px)] leading-[1.7] text-[#b4bfd6]">
+              Hızlı başlatıp kontrollü ilerleyen, riskleri erkenden görünür kılan net bir teslim akışı.
+            </p>
+          </div>
+          <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            {processSteps.map((item) => (
+              <article
+                key={item.step}
+                className="rounded-2xl border border-[rgba(113,136,189,.28)] bg-[rgba(8,16,32,.65)] p-5 text-left"
+              >
+                <p className="inline-flex rounded-full border border-[rgba(132,154,226,.45)] bg-[rgba(113,126,210,.15)] px-3 py-1 text-xs font-semibold tracking-[.08em] text-[#c7d4fa]">
+                  ADIM {item.step}
+                </p>
+                <h3 className="mt-3 font-[var(--font-plus-jakarta)] text-[clamp(21px,1.3vw,28px)] font-semibold leading-[1.3] text-[#eef3ff]">
+                  {item.title}
+                </h3>
+                <p className="mt-2 text-[15px] leading-[1.7] text-[#cbd7ef]">{item.text}</p>
+              </article>
+            ))}
           </div>
         </section>
 
