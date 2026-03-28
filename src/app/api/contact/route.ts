@@ -1,5 +1,3 @@
-import nodemailer from "nodemailer";
-
 export const runtime = "nodejs";
 
 type ContactPayload = {
@@ -32,48 +30,53 @@ export async function POST(request: Request) {
       return Response.json({ error: "Mesaj en az 5 karakter olmalı." }, { status: 400 });
     }
 
-    const smtpHost = process.env.SMTP_HOST ?? "smtp.gmail.com";
-    const smtpPort = Number(process.env.SMTP_PORT ?? 465);
-    const smtpSecure = (process.env.SMTP_SECURE ?? "true") === "true";
-    const smtpUser = process.env.SMTP_USER;
-    const smtpPass = process.env.SMTP_PASS;
-    const fromAddress = process.env.SMTP_FROM ?? smtpUser;
+    const resendApiKey = process.env.RESEND_API_KEY;
+    const fromAddress = process.env.RESEND_FROM ?? "ysflx <onboarding@resend.dev>";
     const toAddress = process.env.CONTACT_TO ?? "y.gordebil@gmail.com";
 
-    if (!smtpUser || !smtpPass || !fromAddress) {
+    if (!resendApiKey || !fromAddress) {
       return Response.json(
-        { error: "Mail yapılandırması eksik. Lütfen SMTP ortam değişkenlerini ayarlayın." },
+        { error: "Mail yapılandırması eksik. Lütfen RESEND ortam değişkenlerini ayarlayın." },
         { status: 500 }
       );
     }
 
-    const transporter = nodemailer.createTransport({
-      host: smtpHost,
-      port: smtpPort,
-      secure: smtpSecure,
-      auth: {
-        user: smtpUser,
-        pass: smtpPass,
+    const resendResponse = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${resendApiKey}`,
+        "Content-Type": "application/json",
       },
+      body: JSON.stringify({
+        from: fromAddress,
+        to: [toAddress],
+        reply_to: email,
+        subject: `[Portfolio İletişim] ${subject}`,
+        text: `Ad Soyad: ${fullName}\nE-posta: ${email}\nKonu: ${subject}\n\nMesaj:\n${message}`,
+        html: `
+          <div style="font-family:Arial,sans-serif;line-height:1.6">
+            <h2>Yeni İletişim Formu Mesajı</h2>
+            <p><strong>Ad Soyad:</strong> ${fullName}</p>
+            <p><strong>E-posta:</strong> ${email}</p>
+            <p><strong>Konu:</strong> ${subject}</p>
+            <p><strong>Mesaj:</strong></p>
+            <p>${message.replace(/\n/g, "<br />")}</p>
+          </div>
+        `,
+      }),
     });
 
-    await transporter.sendMail({
-      from: fromAddress,
-      to: toAddress,
-      replyTo: email,
-      subject: `[Portfolio İletişim] ${subject}`,
-      text: `Ad Soyad: ${fullName}\nE-posta: ${email}\nKonu: ${subject}\n\nMesaj:\n${message}`,
-      html: `
-        <div style="font-family:Arial,sans-serif;line-height:1.6">
-          <h2>Yeni İletişim Formu Mesajı</h2>
-          <p><strong>Ad Soyad:</strong> ${fullName}</p>
-          <p><strong>E-posta:</strong> ${email}</p>
-          <p><strong>Konu:</strong> ${subject}</p>
-          <p><strong>Mesaj:</strong></p>
-          <p>${message.replace(/\n/g, "<br />")}</p>
-        </div>
-      `,
-    });
+    if (!resendResponse.ok) {
+      const errorText = await resendResponse.text();
+      return Response.json(
+        {
+          error:
+            errorText ||
+            "Mesaj gönderilemedi. Lütfen daha sonra tekrar deneyin.",
+        },
+        { status: 502 }
+      );
+    }
 
     return Response.json({ ok: true });
   } catch {
