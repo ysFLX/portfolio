@@ -26,6 +26,20 @@ const experienceCards = [
 ];
 
 const skillLogos = ["React", "TS", "NEXT", "HTML5", "Docker", "Tailwind"];
+const skillTicker = [
+  "React",
+  "TypeScript",
+  "Next.js",
+  "Node.js",
+  "PostgreSQL",
+  "Prisma",
+  "Docker",
+  "Tailwind",
+  "GraphQL",
+  "REST API",
+  "CI/CD",
+  "Vercel",
+];
 
 const faqItems = [
   {
@@ -122,22 +136,22 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="relative overflow-hidden py-[58px] animate-[riseIn_540ms_cubic-bezier(0.23,1,0.32,1)_both] [animation-delay:70ms]">
-          <div className="rounded-2xl border border-[rgba(118,139,196,.18)] bg-[linear-gradient(135deg,rgba(20,31,58,.78),rgba(6,15,32,.72))] p-6">
+        <section className="relative overflow-hidden py-12 animate-[riseIn_540ms_cubic-bezier(0.23,1,0.32,1)_both] [animation-delay:70ms]">
+          <div className="rounded-2xl border border-[rgba(118,139,196,.18)] bg-[linear-gradient(135deg,rgba(20,31,58,.78),rgba(6,15,32,.72))] p-5 sm:p-6 md:p-7">
             <p className="inline-flex items-center gap-2 rounded-xl border border-[rgba(113,136,189,.28)] bg-white/5 px-3.5 py-2 text-[15px] text-[#e9edf8]">
               <span className="text-[14px]">⚡</span>
               Hakkımda
             </p>
-            <div className="mt-4 grid gap-5 lg:grid-cols-[1.35fr_.65fr]">
+            <div className="mt-4 grid items-start gap-6 lg:grid-cols-[minmax(0,1fr)_220px]">
               <div>
                 <h2 className="max-w-[17ch] font-[var(--font-plus-jakarta)] text-[clamp(30px,2.25vw,46px)] font-semibold leading-[1.18] tracking-[-.02em]">Hızlı, faydalı ve sürdürülebilir ürünler geliştiriyorum.</h2>
                 <p className="mt-3 max-w-[64ch] text-[clamp(16px,1vw,18px)] leading-[1.8] text-[#e7ecf9]">Verimli, ölçeklenebilir ve kullanıcı dostu web uygulamaları geliştirmeye odaklanan bir yazılım mühendisiyim. Yolculuğum, ürünlerin perde arkasında nasıl çalıştığına duyduğum merakla başladı ve zamanla gerçek iş etkisi üreten bir kariyere dönüştü.</p>
                 <p className="mt-3 max-w-[64ch] text-[clamp(16px,1vw,18px)] leading-[1.8] text-[#b7c2d9]">Son yıllarda ürün web siteleri, dashboard sistemleri ve iç platformlarda çalıştım. Temiz mimari, akıcı kullanıcı deneyimi ve ölçülebilir performans iyileştirmeleri benim için öncelik.</p>
               </div>
-              <div className="flex justify-end">
-                <div className="sticky top-6 flex flex-col items-start gap-3">
+              <div className="flex justify-start lg:justify-end">
+                <div className="sticky top-6 flex flex-row gap-3 lg:flex-col lg:items-end">
                   {roleBubbles.map((role, i) => (
-                    <span key={role} className={`rounded-full border border-[rgba(168,180,206,.15)] bg-[rgba(35,43,60,.84)] px-5 py-2 text-[15px] text-[#d6dcee] animate-[bubbleFloat_6s_ease-in-out_infinite] ${i === 0 ? "mr-10" : ""}`}>
+                    <span key={role} className={`rounded-full border border-[rgba(168,180,206,.15)] bg-[rgba(35,43,60,.84)] px-5 py-2 text-[15px] text-[#d6dcee] animate-[bubbleFloat_6s_ease-in-out_infinite] ${i === 0 ? "lg:mr-6" : ""}`}>
                       {role}
                     </span>
                   ))}
@@ -147,7 +161,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="work" className="py-[72px] text-center animate-[riseIn_540ms_cubic-bezier(0.23,1,0.32,1)_both] [animation-delay:120ms]">
+        <section id="work" className="py-14 text-center animate-[riseIn_540ms_cubic-bezier(0.23,1,0.32,1)_both] [animation-delay:120ms]">
           <h2 className="mx-auto max-w-[22ch] font-[var(--font-plus-jakarta)] text-[clamp(34px,3.4vw,58px)] font-semibold leading-[1.15] tracking-[-.022em]">Ürettiğim, liderlik ettiğim ve büyüdüğüm yolculuk.</h2>
           <p className="mx-auto mt-3 max-w-[800px] text-[clamp(16px,1.05vw,19px)] leading-[1.7] text-[#b4bfd6]">Geliştirmek, yayına almak ve ölçeklemek için kullandığım araçlar.</p>
           <div className="mt-8 grid gap-4 md:grid-cols-3">
@@ -169,15 +183,34 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="relative py-[72px] text-center">
+        <section className="relative py-14 text-center">
           <h2 className="mx-auto max-w-[22ch] font-[var(--font-plus-jakarta)] text-[clamp(34px,3.4vw,58px)] font-semibold leading-[1.15] tracking-[-.022em]">Yetenekler &amp; Teknolojiler</h2>
           <p className="mx-auto mt-3 max-w-[800px] text-[clamp(16px,1.05vw,19px)] leading-[1.7] text-[#b4bfd6]">Geliştirmek, yayına almak ve ölçeklemek için kullandığım araçlar.</p>
-          <div className="mt-11 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
-            {skillLogos.map((logo) => (
-              <div key={logo} className="flex min-h-[86px] items-center justify-center rounded-xl text-[clamp(20px,1.6vw,30px)] text-[#44b8df]">
-                {logo}
-              </div>
-            ))}
+          <div className="relative mt-10 overflow-hidden rounded-2xl border border-[rgba(113,136,189,.25)] bg-[rgba(8,16,32,.72)]">
+            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-[linear-gradient(90deg,#050c1a,transparent)]" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-[linear-gradient(270deg,#050c1a,transparent)]" />
+
+            <div className="flex w-max animate-[marquee_24s_linear_infinite] gap-3 py-5">
+              {[...skillTicker, ...skillTicker].map((item, idx) => (
+                <div
+                  key={`${item}-${idx}`}
+                  className="flex items-center rounded-full border border-[rgba(113,136,189,.35)] bg-[rgba(14,24,44,.85)] px-5 py-2 text-sm font-semibold tracking-[.01em] text-[#c6d3f2] whitespace-nowrap"
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
+
+            <div className="flex w-max animate-[marqueeReverse_28s_linear_infinite] gap-3 border-t border-[rgba(113,136,189,.2)] py-4">
+              {[...skillLogos, ...skillLogos, ...skillLogos].map((item, idx) => (
+                <div
+                  key={`${item}-sub-${idx}`}
+                  className="flex items-center rounded-full border border-[rgba(87,186,255,.28)] bg-[rgba(10,32,52,.7)] px-4 py-1.5 text-xs font-semibold tracking-[.06em] text-[#56baf0] whitespace-nowrap uppercase"
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
