@@ -92,18 +92,24 @@ function BrandLogo({ footer = false }: { footer?: boolean }) {
     <a
       href="#top"
       aria-label="ysflx"
-      className="inline-flex min-w-[168px] items-center justify-center gap-3 rounded-[14px] border border-[rgba(133,153,210,.35)] bg-[linear-gradient(180deg,rgba(25,36,66,.62),rgba(13,22,43,.58))] px-3 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,.06),0_8px_22px_rgba(7,12,24,.35)] backdrop-blur"
+      className="inline-flex min-w-[196px] items-center justify-center gap-3 rounded-[14px] border border-[rgba(133,153,210,.35)] bg-[linear-gradient(180deg,rgba(25,36,66,.42),rgba(13,22,43,.35))] px-3 py-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,.06),0_8px_22px_rgba(7,12,24,.35)] backdrop-blur"
     >
       <span
-        className={`inline-flex h-8 w-8 items-center justify-center overflow-hidden rounded-[10px] border ${
+        className={`inline-flex h-11 w-11 items-center justify-center overflow-hidden rounded-[12px] border ${
           footer
-            ? "border-[rgba(202,214,255,.35)] bg-[rgba(255,255,255,.06)]"
-            : "border-[rgba(123,142,255,.34)] bg-[rgba(98,108,240,.1)]"
+            ? "border-[rgba(202,214,255,.25)] bg-transparent"
+            : "border-[rgba(123,142,255,.28)] bg-transparent"
         }`}
       >
-        <Image src="/logos/ysFLX.png" alt="ysflx logo" width={22} height={22} className="h-[22px] w-[22px] object-contain" />
+        <Image
+          src="/logos/ysFLX.png"
+          alt="ysflx logo"
+          width={36}
+          height={36}
+          className="h-[36px] w-[36px] object-contain opacity-75"
+        />
       </span>
-      <span className={`font-[var(--font-plus-jakarta)] text-[clamp(20px,1.2vw,24px)] font-bold lowercase tracking-[.01em] ${footer ? "text-[#f4f7fe]" : "text-[#7a83ff]"}`}>
+      <span className={`font-[var(--font-plus-jakarta)] text-[clamp(28px,1.8vw,34px)] font-bold lowercase tracking-[.01em] ${footer ? "text-[#f4f7fe]" : "text-[#7a83ff]"}`}>
         ysflx
       </span>
     </a>
@@ -509,14 +515,14 @@ Gönül rahatlığıyla çalışılabilecek, işini ciddiye alan bir yazılımc�
             </div>
           </div>
 
-          <div className="pointer-events-none absolute left-0 right-0 top-[120px] flex justify-center opacity-[0.1]">
+          <div className="pointer-events-none absolute left-0 right-0 top-[92px] flex justify-center">
             <Image
               src="/logos/ysFLX.png"
               alt=""
               aria-hidden
-              width={760}
-              height={280}
-              className="h-auto w-[min(78vw,760px)] object-contain"
+              width={980}
+              height={420}
+              className="h-auto w-[min(86vw,980px)] object-contain opacity-[0.09] mix-blend-screen saturate-0 brightness-150"
             />
           </div>
 
