@@ -104,13 +104,34 @@ a {
 }
 
 .theme-light-shell {
-  filter: invert(1) hue-rotate(180deg);
+  color: #0f172a;
 }
 
-.theme-light-shell img,
-.theme-light-shell video,
-.theme-light-shell picture,
-.theme-light-shell canvas,
-.theme-light-shell svg {
-  filter: invert(1) hue-rotate(180deg);
+.theme-light-shell :where(h1, h2, h3, h4, p, span, li, label, a, button) {
+  color: #0f172a !important;
+}
+
+.theme-light-shell :where(section > div, article, footer, [role="dialog"] > div) {
+  background-color: rgba(255, 255, 255, 0.82) !important;
+  border-color: rgba(148, 163, 184, 0.38) !important;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+}
+
+.theme-light-shell [class*="text-[#"] {
+  color: #0f172a !important;
+}
+
+.theme-light-shell .theme-primary,
+.theme-light-shell .theme-primary * {
+  color: #ffffff !important;
+}
+
+.theme-light-shell :where(input, textarea) {
+  background: rgba(255, 255, 255, 0.95) !important;
+  color: #0f172a !important;
+  border-color: rgba(148, 163, 184, 0.45) !important;
+}
+
+.theme-light-shell ::placeholder {
+  color: #64748b !important;
 }

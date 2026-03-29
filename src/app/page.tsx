@@ -212,7 +212,14 @@ export default function Home() {
   };
 
   return (
-    <div id="top" className="min-h-full bg-[radial-gradient(900px_280px_at_20%_10%,rgba(120,130,255,.2),transparent_66%),radial-gradient(760px_260px_at_80%_36%,rgba(110,101,216,.17),transparent_70%),#050c1a]">
+    <div
+      id="top"
+      className={`min-h-full ${
+        theme === "light"
+          ? "bg-[radial-gradient(900px_280px_at_20%_10%,rgba(123,142,255,.22),transparent_66%),radial-gradient(760px_260px_at_80%_36%,rgba(110,101,216,.16),transparent_70%),#f5f8ff] text-[#0f172a]"
+          : "bg-[radial-gradient(900px_280px_at_20%_10%,rgba(120,130,255,.2),transparent_66%),radial-gradient(760px_260px_at_80%_36%,rgba(110,101,216,.17),transparent_70%),#050c1a]"
+      }`}
+    >
       <div className={theme === "light" ? "theme-light-shell" : ""}>
         <main className="w-full px-4 sm:px-6 lg:px-10 2xl:px-14">
         <section className="relative overflow-hidden pt-7 min-h-[88vh] animate-[riseIn_540ms_cubic-bezier(0.23,1,0.32,1)_both]">
@@ -234,7 +241,7 @@ export default function Home() {
                   href="#contact"
                   className={`inline-flex h-[52px] min-w-[190px] items-center justify-center rounded-[14px] border px-4 text-base font-semibold transition hover:-translate-y-0.5 ${
                     idx === 1
-                      ? "animate-[ctaGlow_2.7s_ease-in-out_infinite] border-transparent bg-[linear-gradient(180deg,#636bf1_0%,#555ddb_100%)] shadow-[0_0_22px_rgba(98,108,240,.45)]"
+                      ? "theme-primary animate-[ctaGlow_2.7s_ease-in-out_infinite] border-transparent bg-[linear-gradient(180deg,#636bf1_0%,#555ddb_100%)] shadow-[0_0_22px_rgba(98,108,240,.45)]"
                       : "border-[rgba(113,136,189,.28)] bg-[rgba(8,17,34,.86)]"
                   }`}
                 >
@@ -257,7 +264,7 @@ export default function Home() {
             </p>
             <div className="mt-6 flex justify-center gap-3">
               <a href="#contact" className="inline-flex h-[52px] min-w-[190px] items-center justify-center rounded-[14px] border border-[rgba(113,136,189,.28)] bg-[rgba(8,17,34,.86)] px-4 text-base font-semibold transition hover:-translate-y-0.5">Ücretsiz Ön Görüşme</a>
-              <a href="#work" className="inline-flex h-[52px] min-w-[190px] items-center justify-center rounded-[14px] border border-transparent bg-[linear-gradient(180deg,#636bf1_0%,#555ddb_100%)] px-4 text-base font-semibold shadow-[0_0_22px_rgba(98,108,240,.45)] transition hover:-translate-y-0.5">Projelerimi Gör</a>
+              <a href="#work" className="theme-primary inline-flex h-[52px] min-w-[190px] items-center justify-center rounded-[14px] border border-transparent bg-[linear-gradient(180deg,#636bf1_0%,#555ddb_100%)] px-4 text-base font-semibold shadow-[0_0_22px_rgba(98,108,240,.45)] transition hover:-translate-y-0.5">Projelerimi Gör</a>
             </div>
           </div>
         </section>
@@ -512,7 +519,7 @@ Gönül rahatlığıyla çalışılabilecek, işini ciddiye alan bir yazılımc�
             <button
               type="button"
               onClick={() => setIsContactOpen(true)}
-              className="mt-5 inline-flex h-[52px] min-w-[190px] items-center justify-center rounded-[14px] border border-transparent bg-[linear-gradient(180deg,#636bf1_0%,#555ddb_100%)] px-4 text-base font-semibold shadow-[0_0_22px_rgba(98,108,240,.45)] transition hover:-translate-y-0.5"
+              className="theme-primary mt-5 inline-flex h-[52px] min-w-[190px] items-center justify-center rounded-[14px] border border-transparent bg-[linear-gradient(180deg,#636bf1_0%,#555ddb_100%)] px-4 text-base font-semibold shadow-[0_0_22px_rgba(98,108,240,.45)] transition hover:-translate-y-0.5"
             >
               Mesaj Gönder
             </button>
@@ -734,7 +741,7 @@ Gönül rahatlığıyla çalışılabilecek, işini ciddiye alan bir yazılımc�
                     <button
                       type="submit"
                       disabled={isSending}
-                      className="inline-flex h-11 min-w-[150px] items-center justify-center rounded-xl border border-transparent bg-[linear-gradient(180deg,#636bf1_0%,#555ddb_100%)] px-4 text-sm font-semibold text-white shadow-[0_0_18px_rgba(98,108,240,.45)] transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-70"
+                      className="theme-primary inline-flex h-11 min-w-[150px] items-center justify-center rounded-xl border border-transparent bg-[linear-gradient(180deg,#636bf1_0%,#555ddb_100%)] px-4 text-sm font-semibold text-white shadow-[0_0_18px_rgba(98,108,240,.45)] transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-70"
                     >
                       {isSending ? "Gönderiliyor..." : "Gönder"}
                     </button>
