@@ -112,6 +112,9 @@ function BrandLogo({ footer = false }: { footer?: boolean }) {
 export default function Home() {
   const [openFaq, setOpenFaq] = useState(0);
   const [isContactOpen, setIsContactOpen] = useState(false);
+  const [isTermsOpen, setIsTermsOpen] = useState(false);
+  const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
+  const [isDataProcessingOpen, setIsDataProcessingOpen] = useState(false);
   const [isSending, setIsSending] = useState(false);
   const [formMessage, setFormMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
   const [contactForm, setContactForm] = useState({
@@ -123,15 +126,20 @@ export default function Home() {
   });
 
   useEffect(() => {
-    if (!isContactOpen) return;
+    if (!isContactOpen && !isTermsOpen && !isPrivacyOpen && !isDataProcessingOpen) return;
 
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setIsContactOpen(false);
+      if (event.key === "Escape") {
+        setIsContactOpen(false);
+        setIsTermsOpen(false);
+        setIsPrivacyOpen(false);
+        setIsDataProcessingOpen(false);
+      }
     };
 
     document.addEventListener("keydown", onKeyDown);
     return () => document.removeEventListener("keydown", onKeyDown);
-  }, [isContactOpen]);
+  }, [isContactOpen, isTermsOpen, isPrivacyOpen, isDataProcessingOpen]);
 
   useEffect(() => {
     if (!isContactOpen || formMessage?.type !== "success") return;
@@ -520,9 +528,36 @@ Gönül rahatlığıyla çalışılabilecek, işini ciddiye alan bir yazılımc�
           <div className="relative z-10 mt-8 flex flex-col gap-3 border-t border-[rgba(113,136,189,.46)] pt-4 md:flex-row md:items-center md:justify-between">
             <p className="text-[13px] text-[#d4ddf0]">Telif Hakkı © 2026 ysflx - Tüm Hakları Saklıdır.</p>
             <div className="flex flex-wrap gap-4">
-              <a href="#" className="text-[13px] text-[#d4ddf0]">Hizmet Şartları</a>
-              <a href="#" className="text-[13px] text-[#d4ddf0]">Gİzlilik Sözleşmesi</a>
-              <a href="#" className="text-[13px] text-[#d4ddf0]">Veri İşleme Sözleşmesi</a>
+              <a
+                href="#"
+                onClick={(event) => {
+                  event.preventDefault();
+                  setIsTermsOpen(true);
+                }}
+                className="text-[13px] text-[#d4ddf0]"
+              >
+                Hizmet Şartları
+              </a>
+              <a
+                href="#"
+                onClick={(event) => {
+                  event.preventDefault();
+                  setIsPrivacyOpen(true);
+                }}
+                className="text-[13px] text-[#d4ddf0]"
+              >
+                Gİzlilik Sözleşmesi
+              </a>
+              <a
+                href="#"
+                onClick={(event) => {
+                  event.preventDefault();
+                  setIsDataProcessingOpen(true);
+                }}
+                className="text-[13px] text-[#d4ddf0]"
+              >
+                Veri İşleme Sözleşmesi
+              </a>
             </div>
           </div>
         </footer>
@@ -663,6 +698,163 @@ Gönül rahatlığıyla çalışılabilecek, işini ciddiye alan bir yazılımc�
                   </div>
                 </form>
               </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {isTermsOpen && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          className="fixed inset-0 z-[101] flex items-center justify-center bg-[rgba(3,8,18,.52)] backdrop-blur-md p-4"
+          onClick={() => setIsTermsOpen(false)}
+        >
+          <div
+            className="w-full max-w-[820px] rounded-2xl border border-[rgba(131,154,223,.35)] bg-[linear-gradient(160deg,rgba(18,30,55,.98),rgba(10,18,36,.98))] p-6 shadow-[0_20px_60px_rgba(0,0,0,.45)]"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="mb-4 flex items-center justify-between">
+              <h3 className="font-[var(--font-plus-jakarta)] text-2xl font-semibold">Hizmet Şartları</h3>
+              <button
+                type="button"
+                onClick={() => setIsTermsOpen(false)}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[rgba(131,154,223,.35)] text-lg text-[#dbe6ff] transition hover:bg-white/10"
+                aria-label="Hizmet şartlarını kapat"
+              >
+                ×
+              </button>
+            </div>
+
+            <div className="max-h-[68vh] space-y-4 overflow-y-auto pr-1 text-left text-[15px] leading-[1.75] text-[#d6dff4]">
+              <section>
+                <h4 className="font-[var(--font-plus-jakarta)] text-lg font-semibold text-white">1. Hizmet Kapsamı</h4>
+                <p className="mt-1">
+                  Sunulan hizmetler; web geliştirme, teknik danışmanlık, bakım ve performans iyileştirme süreçlerini kapsar. Proje kapsamı,
+                  teklif ve mutabakata göre netleştirilir.
+                </p>
+              </section>
+
+              <section>
+                <h4 className="font-[var(--font-plus-jakarta)] text-lg font-semibold text-white">2. Teslim ve Revize</h4>
+                <p className="mt-1">
+                  Teslim tarihleri proje planına göre belirlenir. Talep edilen revizyonlar, anlaşmada belirtilen kapsam ve süre sınırları
+                  içinde uygulanır.
+                </p>
+              </section>
+
+              <section>
+                <h4 className="font-[var(--font-plus-jakarta)] text-lg font-semibold text-white">3. Sorumluluk ve Kullanım</h4>
+                <p className="mt-1">
+                  Geliştirilen çözümün doğru ve güvenli kullanımı müşterinin sorumluluğundadır. Üçüncü taraf servis kaynaklı kesintilerden
+                  doğan etkilerde, teknik destek kapsamında yönlendirme sağlanır.
+                </p>
+              </section>
+
+              <section>
+                <h4 className="font-[var(--font-plus-jakarta)] text-lg font-semibold text-white">4. İletişim</h4>
+                <p className="mt-1">
+                  Şartlarla ilgili talepler için iletişim formunu kullanarak benimle doğrudan iletişime geçebilirsin.
+                </p>
+              </section>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {isPrivacyOpen && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          className="fixed inset-0 z-[101] flex items-center justify-center bg-[rgba(3,8,18,.52)] backdrop-blur-md p-4"
+          onClick={() => setIsPrivacyOpen(false)}
+        >
+          <div
+            className="w-full max-w-[820px] rounded-2xl border border-[rgba(131,154,223,.35)] bg-[linear-gradient(160deg,rgba(18,30,55,.98),rgba(10,18,36,.98))] p-6 shadow-[0_20px_60px_rgba(0,0,0,.45)]"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="mb-4 flex items-center justify-between">
+              <h3 className="font-[var(--font-plus-jakarta)] text-2xl font-semibold">Gizlilik Sözleşmesi</h3>
+              <button
+                type="button"
+                onClick={() => setIsPrivacyOpen(false)}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[rgba(131,154,223,.35)] text-lg text-[#dbe6ff] transition hover:bg-white/10"
+                aria-label="Gizlilik sözleşmesini kapat"
+              >
+                ×
+              </button>
+            </div>
+
+            <div className="max-h-[68vh] space-y-4 overflow-y-auto pr-1 text-left text-[15px] leading-[1.75] text-[#d6dff4]">
+              <section>
+                <h4 className="font-[var(--font-plus-jakarta)] text-lg font-semibold text-white">1. Toplanan Bilgiler</h4>
+                <p className="mt-1">
+                  İletişim formu üzerinden ad soyad, telefon, e-posta ve mesaj bilgileri yalnızca iletişim ve teklif süreçlerini yürütmek için
+                  alınır.
+                </p>
+              </section>
+              <section>
+                <h4 className="font-[var(--font-plus-jakarta)] text-lg font-semibold text-white">2. Veri Kullanımı</h4>
+                <p className="mt-1">
+                  Paylaşılan bilgiler, üçüncü taraflara satılmaz veya pazarlama amacıyla izinsiz kullanılmaz. Veriler yalnızca hizmet sunumu
+                  kapsamında işlenir.
+                </p>
+              </section>
+              <section>
+                <h4 className="font-[var(--font-plus-jakarta)] text-lg font-semibold text-white">3. Güvenlik</h4>
+                <p className="mt-1">
+                  Kişisel verilerin korunması için güncel güvenlik önlemleri uygulanır. Yetkisiz erişim risklerini azaltmak için teknik
+                  kontroller düzenli olarak gözden geçirilir.
+                </p>
+              </section>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {isDataProcessingOpen && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          className="fixed inset-0 z-[101] flex items-center justify-center bg-[rgba(3,8,18,.52)] backdrop-blur-md p-4"
+          onClick={() => setIsDataProcessingOpen(false)}
+        >
+          <div
+            className="w-full max-w-[820px] rounded-2xl border border-[rgba(131,154,223,.35)] bg-[linear-gradient(160deg,rgba(18,30,55,.98),rgba(10,18,36,.98))] p-6 shadow-[0_20px_60px_rgba(0,0,0,.45)]"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="mb-4 flex items-center justify-between">
+              <h3 className="font-[var(--font-plus-jakarta)] text-2xl font-semibold">Veri İşleme Sözleşmesi</h3>
+              <button
+                type="button"
+                onClick={() => setIsDataProcessingOpen(false)}
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[rgba(131,154,223,.35)] text-lg text-[#dbe6ff] transition hover:bg-white/10"
+                aria-label="Veri işleme sözleşmesini kapat"
+              >
+                ×
+              </button>
+            </div>
+
+            <div className="max-h-[68vh] space-y-4 overflow-y-auto pr-1 text-left text-[15px] leading-[1.75] text-[#d6dff4]">
+              <section>
+                <h4 className="font-[var(--font-plus-jakarta)] text-lg font-semibold text-white">1. İşleme Amacı</h4>
+                <p className="mt-1">
+                  İletilen kişisel veriler, proje değerlendirme, teklif hazırlama ve iletişim süreçlerinin yürütülmesi amacıyla işlenir.
+                </p>
+              </section>
+              <section>
+                <h4 className="font-[var(--font-plus-jakarta)] text-lg font-semibold text-white">2. Saklama Süresi</h4>
+                <p className="mt-1">
+                  Veriler, hizmet ilişkisi boyunca ve yasal yükümlülüklerin gerektirdiği süre kadar saklanır; süre sonunda güvenli şekilde
+                  silinir veya anonimleştirilir.
+                </p>
+              </section>
+              <section>
+                <h4 className="font-[var(--font-plus-jakarta)] text-lg font-semibold text-white">3. Veri Sahibi Hakları</h4>
+                <p className="mt-1">
+                  Veri sahipleri; erişim, düzeltme, silme ve işleme kısıtlama taleplerini iletişim kanalları üzerinden iletebilir.
+                </p>
+              </section>
             </div>
           </div>
         </div>
