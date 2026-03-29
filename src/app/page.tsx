@@ -94,13 +94,14 @@ function BrandLogo({ footer = false }: { footer?: boolean }) {
       aria-label="ysflx"
       className="inline-flex min-w-[168px] items-center justify-center gap-3 rounded-[14px] border border-[rgba(133,153,210,.35)] bg-[linear-gradient(180deg,rgba(25,36,66,.62),rgba(13,22,43,.58))] px-3 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,.06),0_8px_22px_rgba(7,12,24,.35)] backdrop-blur"
     >
-      <span className={`inline-flex h-8 w-8 items-center justify-center rounded-[10px] border ${footer ? "border-[rgba(202,214,255,.35)] bg-[rgba(255,255,255,.06)]" : "border-[rgba(123,142,255,.34)] bg-[rgba(98,108,240,.1)]"}`}>
-        <svg viewBox="0 0 36 36" role="img" className={`h-6 w-6 ${footer ? "fill-[#dce4ff]" : "fill-[#7881ff]"}`}>
-          <path d="M9 7h6l6 6-3.2 3.2L13.4 12H9z" />
-          <path d="M27 7h-6l-6 6 3.2 3.2L22.6 12H27z" />
-          <path d="M9 29h6l6-6-3.2-3.2-4.4 4.4H9z" />
-          <path d="M27 29h-6l-6-6 3.2-3.2 4.4 4.4H27z" />
-        </svg>
+      <span
+        className={`inline-flex h-8 w-8 items-center justify-center overflow-hidden rounded-[10px] border ${
+          footer
+            ? "border-[rgba(202,214,255,.35)] bg-[rgba(255,255,255,.06)]"
+            : "border-[rgba(123,142,255,.34)] bg-[rgba(98,108,240,.1)]"
+        }`}
+      >
+        <Image src="/logos/ysFLX.png" alt="ysflx logo" width={22} height={22} className="h-[22px] w-[22px] object-contain" />
       </span>
       <span className={`font-[var(--font-plus-jakarta)] text-[clamp(20px,1.2vw,24px)] font-bold lowercase tracking-[.01em] ${footer ? "text-[#f4f7fe]" : "text-[#7a83ff]"}`}>
         ysflx
@@ -508,7 +509,16 @@ Gönül rahatlığıyla çalışılabilecek, işini ciddiye alan bir yazılımc�
             </div>
           </div>
 
-          <div className="pointer-events-none absolute left-0 right-0 top-[145px] text-center text-[clamp(120px,14vw,260px)] font-bold tracking-[.08em] text-[rgba(147,164,196,.12)]">YSFLX</div>
+          <div className="pointer-events-none absolute left-0 right-0 top-[120px] flex justify-center opacity-[0.1]">
+            <Image
+              src="/logos/ysFLX.png"
+              alt=""
+              aria-hidden
+              width={760}
+              height={280}
+              className="h-auto w-[min(78vw,760px)] object-contain"
+            />
+          </div>
 
           <div className="relative z-10 mt-8 grid gap-6 md:grid-cols-5">
             {footerColumns.map((col) => (
