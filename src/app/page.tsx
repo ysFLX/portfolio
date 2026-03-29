@@ -97,8 +97,8 @@ function BrandLogo({ footer = false }: { footer?: boolean }) {
       <Image
         src="/logos/asd.png"
         alt="ysflx logo"
-        width={footer ? 170 : 190}
-        height={footer ? 54 : 62}
+        width={footer ? 112 : 190}
+        height={footer ? 36 : 62}
         className={`h-auto w-auto object-contain ${footer ? "opacity-75" : "opacity-85"}`}
       />
     </a>
@@ -494,13 +494,25 @@ Gönül rahatlığıyla çalışılabilecek, işini ciddiye alan bir yazılımc�
           </div>
         </section>
 
-        <footer className="relative py-12">
+        <footer className="relative py-4">
           <div className="flex items-center justify-between gap-4">
-            <BrandLogo footer />
+            <a
+              href="#top"
+              aria-label="ysflx"
+              className="inline-flex h-12 w-12 items-center justify-center overflow-hidden rounded-xl border border-[rgba(133,153,210,.26)] bg-[rgba(10,18,34,.25)]"
+            >
+              <Image
+                src="/logos/asd.png"
+                alt="ysflx logo"
+                width={44}
+                height={44}
+                className="h-11 w-11 object-contain opacity-80"
+              />
+            </a>
             <div className="flex gap-3.5">
-              <a href="#" className="inline-flex h-[42px] w-[42px] items-center justify-center rounded-full border border-[#dce4f8] text-[#dce4f8]">X</a>
-              <a href="#" className="inline-flex h-[42px] w-[42px] items-center justify-center rounded-full border border-[#dce4f8] text-[#dce4f8]">f</a>
-              <a href="#" className="inline-flex h-[42px] w-[42px] items-center justify-center rounded-full border border-[#dce4f8] text-[#dce4f8]">ig</a>
+              <a href="#" className="inline-flex h-[36px] w-[36px] items-center justify-center rounded-full border border-[#dce4f8] text-[#dce4f8] text-sm">X</a>
+              <a href="#" className="inline-flex h-[36px] w-[36px] items-center justify-center rounded-full border border-[#dce4f8] text-[#dce4f8] text-sm">f</a>
+              <a href="#" className="inline-flex h-[36px] w-[36px] items-center justify-center rounded-full border border-[#dce4f8] text-[#dce4f8] text-sm">ig</a>
             </div>
           </div>
 
@@ -509,13 +521,13 @@ Gönül rahatlığıyla çalışılabilecek, işini ciddiye alan bir yazılımc�
               src="/logos/asd.png"
               alt=""
               aria-hidden
-              width={720}
-              height={280}
-              className="h-auto w-[min(72vw,720px)] object-contain opacity-[0.045] mix-blend-screen saturate-0"
+              width={420}
+              height={160}
+              className="h-auto w-[min(48vw,420px)] object-contain opacity-[0.03] mix-blend-screen saturate-0"
             />
           </div>
 
-          <div className="relative z-10 mt-8 grid gap-6 md:grid-cols-5">
+          <div className="relative z-10 mt-4 grid gap-4 md:grid-cols-5">
             {footerColumns.map((col) => (
               <div key={col.title + col.links[0]}>
                 <h4 className="mb-2.5 font-[var(--font-plus-jakarta)] text-lg font-semibold">{col.title}</h4>
@@ -530,7 +542,7 @@ Gönül rahatlığıyla çalışılabilecek, işini ciddiye alan bir yazılımc�
             ))}
           </div>
 
-          <div className="relative z-10 mt-8 flex flex-col gap-3 border-t border-[rgba(113,136,189,.46)] pt-4 md:flex-row md:items-center md:justify-between">
+          <div className="relative z-10 mt-4 flex flex-col gap-3 border-t border-[rgba(113,136,189,.46)] pt-3 md:flex-row md:items-center md:justify-between">
             <p className="text-[13px] text-[#d4ddf0]">Telif Hakkı © 2026 ysflx - Tüm Hakları Saklıdır.</p>
             <div className="flex flex-wrap gap-4">
               <a
