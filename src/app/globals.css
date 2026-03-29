@@ -102,3 +102,15 @@ a {
     scroll-behavior: auto !important;
   }
 }
+
+.theme-light-shell {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+.theme-light-shell img,
+.theme-light-shell video,
+.theme-light-shell picture,
+.theme-light-shell canvas,
+.theme-light-shell svg {
+  filter: invert(1) hue-rotate(180deg);
+}

@@ -92,20 +92,21 @@ function BrandLogo({ footer = false }: { footer?: boolean }) {
     <a
       href="#top"
       aria-label="ysflx"
-      className="inline-flex h-[96px] w-[96px] items-center justify-center rounded-[16px] border border-[rgba(133,153,210,.32)] bg-[linear-gradient(180deg,rgba(25,36,66,.28),rgba(13,22,43,.2))] p-2 shadow-[inset_0_1px_0_rgba(255,255,255,.06),0_8px_22px_rgba(7,12,24,.35)] backdrop-blur"
+      className="inline-flex h-[112px] w-[112px] items-center justify-center rounded-[16px] border border-[rgba(133,153,210,.32)] bg-[linear-gradient(180deg,rgba(25,36,66,.28),rgba(13,22,43,.2))] p-2 shadow-[inset_0_1px_0_rgba(255,255,255,.06),0_8px_22px_rgba(7,12,24,.35)] backdrop-blur"
     >
       <Image
         src="/logos/asd.png"
         alt="ysflx logo"
-        width={76}
-        height={76}
-        className={`h-[76px] w-[76px] object-contain ${footer ? "opacity-75" : "opacity-85"}`}
+        width={90}
+        height={90}
+        className={`h-[90px] w-[90px] object-contain ${footer ? "opacity-75" : "opacity-85"}`}
       />
     </a>
   );
 }
 
 export default function Home() {
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
   const [openFaq, setOpenFaq] = useState(0);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isTermsOpen, setIsTermsOpen] = useState(false);
@@ -120,6 +121,22 @@ export default function Home() {
     subject: "",
     message: "",
   });
+
+  useEffect(() => {
+    const storedTheme = window.localStorage.getItem("theme") as "dark" | "light" | null;
+    if (storedTheme === "dark" || storedTheme === "light") {
+      setTheme(storedTheme);
+      return;
+    }
+
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    setTheme(prefersDark ? "dark" : "light");
+  }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem("theme", theme);
+    document.documentElement.style.colorScheme = theme;
+  }, [theme]);
 
   useEffect(() => {
     if (!isContactOpen && !isTermsOpen && !isPrivacyOpen && !isDataProcessingOpen) return;
@@ -196,13 +213,21 @@ export default function Home() {
 
   return (
     <div id="top" className="min-h-full bg-[radial-gradient(900px_280px_at_20%_10%,rgba(120,130,255,.2),transparent_66%),radial-gradient(760px_260px_at_80%_36%,rgba(110,101,216,.17),transparent_70%),#050c1a]">
-      <main className="w-full px-4 sm:px-6 lg:px-10 2xl:px-14">
+      <div className={theme === "light" ? "theme-light-shell" : ""}>
+        <main className="w-full px-4 sm:px-6 lg:px-10 2xl:px-14">
         <section className="relative overflow-hidden pt-7 min-h-[88vh] animate-[riseIn_540ms_cubic-bezier(0.23,1,0.32,1)_both]">
           <div className="pointer-events-none absolute inset-0 animate-[ribbonDrift_12s_ease-in-out_infinite] bg-[linear-gradient(26deg,transparent_32%,rgba(141,149,234,.4)_52%,transparent_72%)] opacity-60 blur-[34px]" />
 
           <header className="relative z-10 flex items-center justify-between gap-4">
             <BrandLogo />
             <div className="flex flex-wrap gap-3">
+              <button
+                type="button"
+                onClick={() => setTheme((prev) => (prev === "dark" ? "light" : "dark"))}
+                className="inline-flex h-[52px] min-w-[120px] items-center justify-center rounded-[14px] border border-[rgba(113,136,189,.28)] bg-[rgba(8,17,34,.86)] px-4 text-base font-semibold transition hover:-translate-y-0.5"
+              >
+                {theme === "dark" ? "Açık Tema" : "Koyu Tema"}
+              </button>
               {navButtons.map((btn, idx) => (
                 <a
                   key={btn}
@@ -578,7 +603,8 @@ Gönül rahatlığıyla çalışılabilecek, işini ciddiye alan bir yazılımc�
             </div>
           </div>
         </footer>
-      </main>
+        </main>
+      </div>
 
       {isContactOpen && (
         <div
