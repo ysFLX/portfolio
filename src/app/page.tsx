@@ -452,7 +452,7 @@ Gerçek projeler üretmeyi ve öğrendiklerimi uygulamaya dökmeyi önemsiyorum.
               <h3 className="font-[var(--font-plus-jakarta)] text-xl font-semibold">Arafat Uygur</h3>
               <p className="text-sm text-[#f0f2fb]">Müşteri</p>
             </div>
-            <div className="absolute left-6 right-6 top-[78px] flex min-h-[84px] items-center justify-center rounded-[14px] border border-[rgba(143,156,188,.62)] bg-white/10 text-sm font-semibold">Yusuf ile e-ticaret sitemiz için çalışma fırsatı bulduk ve açıkçası süreç beklediğimden çok daha iyi ilerledi. Ne istediğimizi hızlıca anlayıp bize hem tasarım hem de kullanım açısından gerçekten güzel bir site ortaya çıkardı. Özellikle mobil uyumluluk ve site hızı konusunda çok memnun kaldık.
+            <div className="absolute left-6 right-6 top-[78px] flex min-h-[84px] items-center justify-center rounded-[14px] border border-[rgba(143,156,188,.62)] bg-white/10 text-md font-semibold">Yusuf ile e-ticaret sitemiz için çalışma fırsatı bulduk ve açıkçası süreç beklediğimden çok daha iyi ilerledi. Ne istediğimizi hızlıca anlayıp bize hem tasarım hem de kullanım açısından gerçekten güzel bir site ortaya çıkardı. Özellikle mobil uyumluluk ve site hızı konusunda çok memnun kaldık.
 
 Süreç boyunca sürekli iletişimde kaldı, her aşamada bilgilendirme yaptı ve taleplerimizi hızlıca çözdü. Sadece verilen işi yapmakla kalmayıp kendi önerileriyle projeyi daha da geliştirdi.
 
