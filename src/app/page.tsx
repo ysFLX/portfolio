@@ -92,14 +92,14 @@ function BrandLogo({ footer = false }: { footer?: boolean }) {
     <a
       href="#top"
       aria-label="ysflx"
-      className="inline-flex h-[64px] w-[64px] items-center justify-center rounded-[14px] border border-[rgba(133,153,210,.32)] bg-[linear-gradient(180deg,rgba(25,36,66,.28),rgba(13,22,43,.2))] p-1.5 shadow-[inset_0_1px_0_rgba(255,255,255,.06),0_8px_22px_rgba(7,12,24,.35)] backdrop-blur"
+      className="inline-flex h-[96px] w-[96px] items-center justify-center rounded-[16px] border border-[rgba(133,153,210,.32)] bg-[linear-gradient(180deg,rgba(25,36,66,.28),rgba(13,22,43,.2))] p-2 shadow-[inset_0_1px_0_rgba(255,255,255,.06),0_8px_22px_rgba(7,12,24,.35)] backdrop-blur"
     >
       <Image
         src="/logos/asd.png"
         alt="ysflx logo"
-        width={48}
-        height={48}
-        className={`h-12 w-12 object-contain ${footer ? "opacity-75" : "opacity-85"}`}
+        width={76}
+        height={76}
+        className={`h-[76px] w-[76px] object-contain ${footer ? "opacity-75" : "opacity-85"}`}
       />
     </a>
   );
