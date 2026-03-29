@@ -92,26 +92,15 @@ function BrandLogo({ footer = false }: { footer?: boolean }) {
     <a
       href="#top"
       aria-label="ysflx"
-      className="inline-flex min-w-[196px] items-center justify-center gap-3 rounded-[14px] border border-[rgba(133,153,210,.35)] bg-[linear-gradient(180deg,rgba(25,36,66,.42),rgba(13,22,43,.35))] px-3 py-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,.06),0_8px_22px_rgba(7,12,24,.35)] backdrop-blur"
+      className="inline-flex items-center justify-center rounded-[14px] border border-[rgba(133,153,210,.32)] bg-[linear-gradient(180deg,rgba(25,36,66,.28),rgba(13,22,43,.2))] px-4 py-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,.06),0_8px_22px_rgba(7,12,24,.35)] backdrop-blur"
     >
-      <span
-        className={`inline-flex h-11 w-11 items-center justify-center overflow-hidden rounded-[12px] border ${
-          footer
-            ? "border-[rgba(202,214,255,.25)] bg-transparent"
-            : "border-[rgba(123,142,255,.28)] bg-transparent"
-        }`}
-      >
-        <Image
-          src="/logos/asd.png"
-          alt="ysflx logo"
-          width={36}
-          height={36}
-          className="h-[36px] w-[36px] object-contain opacity-75"
-        />
-      </span>
-      <span className={`font-[var(--font-plus-jakarta)] text-[clamp(28px,1.8vw,34px)] font-bold lowercase tracking-[.01em] ${footer ? "text-[#f4f7fe]" : "text-[#7a83ff]"}`}>
-        ysflx
-      </span>
+      <Image
+        src="/logos/asd.png"
+        alt="ysflx logo"
+        width={footer ? 170 : 190}
+        height={footer ? 54 : 62}
+        className={`h-auto w-auto object-contain ${footer ? "opacity-75" : "opacity-85"}`}
+      />
     </a>
   );
 }
@@ -515,14 +504,14 @@ Gönül rahatlığıyla çalışılabilecek, işini ciddiye alan bir yazılımc�
             </div>
           </div>
 
-          <div className="pointer-events-none absolute left-0 right-0 top-[92px] flex justify-center">
+          <div className="pointer-events-none absolute inset-x-0 top-1/2 z-0 flex -translate-y-1/2 justify-center">
             <Image
               src="/logos/asd.png"
               alt=""
               aria-hidden
-              width={980}
-              height={420}
-              className="h-auto w-[min(86vw,980px)] object-contain opacity-[0.09] mix-blend-screen saturate-0 brightness-150"
+              width={720}
+              height={280}
+              className="h-auto w-[min(72vw,720px)] object-contain opacity-[0.045] mix-blend-screen saturate-0"
             />
           </div>
 
