@@ -425,20 +425,20 @@ Gerçek projeler üretmeyi ve öğrendiklerimi uygulamaya dökmeyi önemsiyorum.
                 <span className="text-[14px]">⚡</span>
                 Eğitim
               </p>
-              <p className="mt-10 text-[15px] leading-[1.72] text-[#d6ddef]">Universitas Teknologi Digital - 2019 - 2023 GPA: 3.85 / 4.00, İlgili Dersler: Veri Yapıları, Web Geliştirme, Yazılım Mühendisliği, Bulut Bilişim Aktiviteler: Kodlama Kulübü Üyesi, Bitirme Projesinde Lider Geliştirici</p>
+              <p className="mt-10 text-[15px] leading-[1.72] text-[#d6ddef]">Konya Teknik Üniversitesi Meslek Yüksekokulu Bilgisayar Programcılığı - 2021 - 2023 </p>
             </article>
             <article className="min-h-[210px] rounded-2xl border border-[rgba(113,136,189,.28)] bg-[#0c1528] p-6 text-left">
               <p className="inline-flex items-center gap-2 rounded-xl border border-[rgba(113,136,189,.28)] bg-white/5 px-3.5 py-2 text-[15px] text-[#e9edf8]">
                 <span className="text-[14px]">⚡</span>
                 Staj
               </p>
-              <p className="mt-10 text-[15px] leading-[1.72] text-[#d6ddef]">Yazılım Geliştirme Stajyeri - 2022 Yaz Dönemi, ABC Teknoloji. Dashboard bileşenleri geliştirdim, API entegrasyonlarında görev aldım ve performans iyileştirmeleri için frontend optimizasyonlarına katkı sundum.</p>
+              <p className="mt-10 text-[15px] leading-[1.72] text-[#d6ddef]">Kapsül Teknoloji Yazılım Geliştirme Stajyeri - 2022 Yaz Dönemi, Meram Belediyesi Bilgi İşlem Stajyeri</p>
             </article>
           </div>
         </section>
 
         <section className="py-[72px] text-center">
-          <h2 className="mx-auto max-w-[22ch] font-[var(--font-plus-jakarta)] text-[clamp(34px,3.4vw,58px)] font-semibold leading-[1.15] tracking-[-.022em]">Teknoloji Topluluğuna Katkı</h2>
+          <h2 className="mx-auto max-w-[22ch] font-[var(--font-plus-jakarta)] text-[clamp(34px,3.4vw,58px)] font-semibold leading-[1.15] tracking-[-.022em]">Müşteri Yorumları</h2>
           <p className="mx-auto mt-3 max-w-[800px] text-[clamp(16px,1.05vw,19px)] leading-[1.7] text-[#b4bfd6]">Proje geliştirmek dışında açık kaynak araçlara katkı sağlıyor, bilgi paylaşıyor ve geliştirici topluluğunu destekliyorum.</p>
           <article className="group relative mx-auto mt-7 min-h-[240px] max-w-[1320px] overflow-hidden rounded-[20px] border border-[rgba(143,156,188,.35)]">
             <Image
@@ -450,10 +450,14 @@ Gerçek projeler üretmeyi ve öğrendiklerimi uygulamaya dökmeyi önemsiyorum.
             />
             <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(72,11,24,.72),rgba(17,29,56,.76))]" />
             <div className="absolute left-5 top-4 text-left">
-              <h3 className="font-[var(--font-plus-jakarta)] text-xl font-semibold">David Tan</h3>
+              <h3 className="font-[var(--font-plus-jakarta)] text-xl font-semibold">Arafat Uygur</h3>
               <p className="text-sm text-[#f0f2fb]">Müşteri</p>
             </div>
-            <div className="absolute left-6 right-6 top-[78px] flex min-h-[84px] items-center justify-center rounded-[14px] border border-[rgba(143,156,188,.62)] bg-white/10 text-[clamp(22px,1.7vw,32px)] font-semibold">Pazar Geliri +1500%</div>
+            <div className="absolute left-6 right-6 top-[78px] flex min-h-[84px] items-center justify-center rounded-[14px] border border-[rgba(143,156,188,.62)] bg-white/10 text-[clamp(22px,1.7vw,32px)] font-semibold">Yusuf ile e-ticaret sitemiz için çalışma fırsatı bulduk ve açıkçası süreç beklediğimden çok daha iyi ilerledi. Ne istediğimizi hızlıca anlayıp bize hem tasarım hem de kullanım açısından gerçekten güzel bir site ortaya çıkardı. Özellikle mobil uyumluluk ve site hızı konusunda çok memnun kaldık.
+
+Süreç boyunca sürekli iletişimde kaldı, her aşamada bilgilendirme yaptı ve taleplerimizi hızlıca çözdü. Sadece verilen işi yapmakla kalmayıp kendi önerileriyle projeyi daha da geliştirdi.
+
+Gönül rahatlığıyla çalışılabilecek, işini ciddiye alan bir yazılımcı. İleride tekrar çalışmayı düşünüyoruz.</div>
           </article>
         </section>
 
