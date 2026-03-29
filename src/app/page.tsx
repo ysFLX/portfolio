@@ -102,7 +102,7 @@ function BrandLogo({ footer = false }: { footer?: boolean }) {
         }`}
       >
         <Image
-          src="/logos/ysFLX.png"
+          src="/logos/asd.png"
           alt="ysflx logo"
           width={36}
           height={36}
@@ -517,7 +517,7 @@ Gönül rahatlığıyla çalışılabilecek, işini ciddiye alan bir yazılımc�
 
           <div className="pointer-events-none absolute left-0 right-0 top-[92px] flex justify-center">
             <Image
-              src="/logos/ysFLX.png"
+              src="/logos/asd.png"
               alt=""
               aria-hidden
               width={980}
