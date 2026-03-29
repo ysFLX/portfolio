@@ -81,11 +81,10 @@ const faqItems = [
 ];
 
 const footerColumns = [
-  { title: "Ürün", links: ["Özellikler", "Entegrasyonlar", "Fiyatlandırma", "Yenilikler", "Dokümantasyon", "İndir"] },
-  { title: "Şirket", links: ["Hakkımızda", "Blog", "Kariyer", "Müşteriler", "Marka Varlıkları"] },
-  { title: "Kaynaklar", links: ["Topluluk", "İletişim", "Sistem Durumu", "Hizmet Şartları"] },
-  { title: "Geliştiriciler", links: ["API", "Sistem Durumu", "GitHub"] },
-  { title: "Şirket", links: ["Hakkımızda", "Blog", "Kariyer", "Müşteriler", "Marka Varlıkları"] },
+  { title: "Ürün", links: ["Özellikler", "Entegrasyonlar", "Fiyatlandırma"] },
+  { title: "Şirket", links: ["Hakkımızda", "Blog", "Kariyer", "Müşteriler"] },
+  { title: "Kaynaklar", links: ["Topluluk", "İletişim"] },
+  { title: "Geliştiriciler", links: ["API","GitHub"] },
 ];
 
 function BrandLogo({ footer = false }: { footer?: boolean }) {
